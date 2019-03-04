@@ -1,0 +1,2129 @@
+/* Font copied in place by React Studio. Please check that your license for this font file permits embedding on a website. */
+@font-face {
+  font-family: 'SFUIText-Regular';
+  src: url('fonts/BF396DF7D0C0-Regular.otf');
+}
+
+.font-SFUITextRegular {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+}
+@media (min-resolution: 120dpi) {
+  .font-SFUITextRegular {
+    font-family: 'SFUIText-Regular', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  }
+}
+
+.App { /* Base font style */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-size: 15.1px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(0, 0, 0, 0.8500);
+  background-color: #f6f6f6;
+}
+
+.App .baseFont * { /* Base font style override for UI framework components */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-size: 15.1px;
+}
+
+.App .appBg {
+  background-color: #f6f6f6;
+}
+
+.App .cardBg {
+  background-color: white;
+}
+
+.App .baseTextBg { /* Base text color as background */
+  background-color: rgba(0, 0, 0, 0.8500);
+}
+
+.App .secondaryTextColor {
+  color: rgba(0, 0, 0, 0.5000);
+}
+
+.App .secondaryTextBg {
+  background-color: rgba(0, 0, 0, 0.5000);
+}
+
+.App .primaryTextColor {
+  color: #bee9ee;
+}
+
+.App .primaryBg {
+  background-color: #bee9ee;
+}
+
+.App .highlightTextColor {
+  color: #0093d5;
+}
+
+.App .highlightBg {
+  background-color: #0093d5;
+}
+
+/* Styles to customize the UI framework plugin (MUI, https://muicss.com) */
+.mui-btn {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.mui-btn--primary {
+    background-color: #bee9ee;
+}
+.mui-btn--primary:active, .mui-btn--primary:focus, .mui-btn--primary:hover {
+    background-color: #c3ebf0;
+}
+.mui-btn--accent {
+    background-color: #0093d5;
+}
+.mui-btn--accent:active, .mui-btn--accent:focus, .mui-btn--accent:hover {
+    background-color: #069fda;
+}
+.mui-textfield {  /* Reset UI framework styling that affects layout */
+    padding-top: 0;
+    margin-bottom: 0;
+}
+.mui-checkbox, .mui-radio {  /* Reset UI framework styling that affects layout */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.mui-select {  /* Reset UI framework styling that affects layout */
+    padding-top: 0;
+    margin-bottom: 0;
+}
+.mui-btn+.mui-btn {  /* Reset UI framework styling that affects layout */
+    margin-left: 0;
+}
+.mui-btn--fab {  /* Reset UI framework styling that breaks compositing */
+    z-index: auto;
+}
+.mui-appbar {
+    height: 64px;
+}
+
+@keyframes fadeIn {
+    0%   { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+@keyframes slideIn_right {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}
+@keyframes slideIn_bottom {
+    0%   { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+}
+
+/* App-wide text styles specified in React Studio */
+.App .actionFont {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-size: 14.2px;
+  font-weight: 400;
+}
+.App .actionFont * {
+  font-size: 14.2px;
+}
+.App .headlineFont {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-size: 19.4px;
+  font-weight: 400;
+}
+.App .headlineFont * {
+  font-size: 19.4px;
+}
+.App .navBar {
+  background-color: #bee9ee;
+  color: black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
+  font-size: 18px;
+}
+
+.App .navBar a {
+  color: black;
+}
+
+.App .navBar .title {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: 4px;
+  margin-top: 14px;
+}
+
+.App .navBar .backBtn {
+  position: absolute;
+  padding: 4px;
+  margin-left: 14px;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+@media (min-width: 320px) {
+  .mui-container {
+    max-width: 320px;
+  }
+}
+@media (min-width: 568px) {
+  .mui-container {
+    max-width: 568px;
+  }
+}
+@media (min-width: 768px) {
+  .mui-container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .mui-container {
+    max-width: 1024px;
+  }
+}
+
+.AppScreen {
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.App .background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.App .layoutFlow {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+}
+.App .layoutFlow:before {  /* Prevent margin collapse */
+  content: "";
+  display: table;
+  clear: both;
+}
+.App .layoutFlow .flowRow {
+  position: relative;
+  width: 100%;
+}
+
+.App .screenFgContainer {
+  /* Items in the foreground group within a screen are placed with fixed positioning */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.App .foreground {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.App ul {
+  margin: 0;
+  padding: 0;
+}
+.App li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  position: relative;
+}
+.App .hasNestedComps {
+  position: relative;
+}
+.App .hasNestedComps:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.App .hasNestedComps .background {
+  position: absolute;
+}
+.App .hasNestedComps .layoutFlow {
+  position: relative;
+}
+.App .bottomAlignedContent {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.App .blockInputOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: auto;
+  z-index: 99999999;
+}
+
+/* This component has a fixed-size layout */
+  .Component2 {
+    min-height: 114px;
+    width: 100%; /* This component was designed using a width of 182px */
+    height: 100%;
+  }
+  .Component2 > .background > .containerMinHeight {
+    min-height: 114px;
+  }
+
+
+  .Component2 > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+
+
+  .Component2 > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: 14px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .Component2 > .layoutFlow > .elText > * { 
+    width: 100%;
+  }
+  
+
+
+  .Component2 > .layoutFlow > .elText2 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 14px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .Component2 > .layoutFlow > .elText2 > * { 
+    width: 100%;
+  }
+  
+
+/* This component has a fixed-size layout */
+  .Component1 {
+    min-height: 166px;
+    width: 100%; /* This component was designed using a width of 186px */
+    height: 100%;
+  }
+  .Component1 > .background > .containerMinHeight {
+    min-height: 166px;
+  }
+
+
+  .Component1 > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+
+
+  .Component1 > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .Component1 > .layoutFlow > .elText > * { 
+    width: 100%;
+  }
+  
+
+
+  .Component1 > .layoutFlow > .elText2 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .Component1 > .layoutFlow > .elText2 > * { 
+    width: 100%;
+  }
+  
+
+
+  .Component1 > .layoutFlow > .elText3 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .Component1 > .layoutFlow > .elText3 > * { 
+    width: 100%;
+  }
+  
+
+.Component1 .elButton button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .Component1 > .layoutFlow > .elButton {
+    line-height: 35px;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .Component1 > .layoutFlow > .elButton > * { 
+    width: 100%;
+  }
+  
+
+.Component1 .elButtonCopy {
+  cursor: pointer;
+  border: 0.0px solid transparent;
+}
+
+
+
+  .Component1 > .foreground > .elButtonCopy {
+    line-height: 35px;
+    position: absolute;
+    left: 38px;
+    right: 75px;
+    top: 130px;
+    width: calc(100.0% - 38px - 75px);
+    height: 35px;
+  }
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+@media (min-width: 568px) {
+  .AddBikerScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: 90px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText > * { 
+  width: 238px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: 90px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText > * { 
+  width: 238px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: 90px;
+    width: 236px;
+    margin-left: 112px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText > * { 
+  width: 236px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: 112px;
+    width: 236px;
+    margin-left: 380px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText > * { 
+  width: 236px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elText2 {
+    position: relative;
+    margin-top: 52px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText2 > * { 
+  width: 238px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elText2 {
+    position: relative;
+    margin-top: 52px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText2 > * { 
+  width: 238px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elText2 {
+    position: relative;
+    margin-top: 52px;
+    width: 236px;
+    margin-left: 112px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText2 > * { 
+  width: 236px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elText2 {
+    position: relative;
+    margin-top: 45px;
+    width: 236px;
+    margin-left: 380px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText2 > * { 
+  width: 236px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elField2 {
+    position: relative;
+    margin-top: 4px;
+    width: 226px;
+    margin-left: 484px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField2 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elField2 {
+    position: relative;
+    margin-top: 4px;
+    width: 226px;
+    margin-left: 484px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField2 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elField2 {
+    position: relative;
+    margin-top: 4px;
+    width: 225px;
+    margin-left: 482px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField2 > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elField2 {
+    position: relative;
+    margin-top: -24px;
+    width: 225px;
+    margin-left: 482px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField2 > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elField {
+    position: relative;
+    margin-top: -95px;
+    width: 226px;
+    margin-left: 9px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elField {
+    position: relative;
+    margin-top: -95px;
+    width: 226px;
+    margin-left: 9px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elField {
+    position: relative;
+    margin-top: -94px;
+    width: 225px;
+    margin-left: 9px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elField {
+    position: relative;
+    margin-top: -101px;
+    width: 225px;
+    margin-left: 483px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elText3 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 72px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText3 > * { 
+  width: 238px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elText3 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 72px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText3 > * { 
+  width: 238px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elText3 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 72px;
+    width: 236px;
+    margin-left: 112px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText3 > * { 
+  width: 236px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elText3 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 108px;
+    width: 236px;
+    margin-left: 379px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText3 > * { 
+  width: 236px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elText4 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 47px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText4 > * { 
+  width: 238px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elText4 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 47px;
+    width: 238px;
+    margin-left: 113px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText4 > * { 
+  width: 238px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elText4 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 46px;
+    width: 236px;
+    margin-left: 112px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText4 > * { 
+  width: 236px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elText4 {
+    overflow: hidden;
+    position: relative;
+    margin-top: 44px;
+    width: 236px;
+    margin-left: 380px;
+  }
+  .AddBikerScreen > .layoutFlow > .elText4 > * { 
+  width: 236px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elField3 {
+    position: relative;
+    margin-top: -64px;
+    width: 226px;
+    margin-left: 484px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField3 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elField3 {
+    position: relative;
+    margin-top: -64px;
+    width: 226px;
+    margin-left: 484px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField3 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elField3 {
+    position: relative;
+    margin-top: -64px;
+    width: 225px;
+    margin-left: 482px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField3 > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elField3 {
+    position: relative;
+    margin-top: -95px;
+    width: 225px;
+    margin-left: 482px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField3 > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elField4 {
+    position: relative;
+    margin-top: 41px;
+    width: 226px;
+    margin-left: 484px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField4 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elField4 {
+    position: relative;
+    margin-top: 41px;
+    width: 226px;
+    margin-left: 484px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField4 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elField4 {
+    position: relative;
+    margin-top: 41px;
+    width: 225px;
+    margin-left: 482px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField4 > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elField4 {
+    position: relative;
+    margin-top: 34px;
+    width: 225px;
+    margin-left: 482px;
+  }
+  .AddBikerScreen > .layoutFlow > .elField4 > * { 
+  width: 225px;
+  height: 34px;
+  }
+  
+}
+
+.AddBikerScreen .elFab button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 68px;
+    margin-left: 932px;
+  }
+  .AddBikerScreen > .layoutFlow > .elFab > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+@media (min-width: 568px) {
+  .AddBikerScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 68px;
+    margin-left: 932px;
+  }
+  .AddBikerScreen > .layoutFlow > .elFab > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 68px;
+    margin-left: 926px;
+  }
+  .AddBikerScreen > .layoutFlow > .elFab > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 68px;
+    margin-left: 926px;
+  }
+  .AddBikerScreen > .layoutFlow > .elFab > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .AddBikerScreen > .screenFgContainer > .foreground > .elLine2 {
+    position: absolute;
+    left: -212px;
+    top: 188px;
+    width: 88px;
+    height: 99px;
+  }
+@media (min-width: 568px) {
+  .AddBikerScreen > .screenFgContainer > .foreground > .elLine2 {
+    left: -212px;
+    top: 188px;
+    width: 88px;
+    height: 99px;
+  }
+}
+@media (min-width: 768px) {
+  .AddBikerScreen > .screenFgContainer > .foreground > .elLine2 {
+    left: -211px;
+    top: 187px;
+    width: 87px;
+    height: 98px;
+  }
+}
+@media (min-width: 1024px) {
+  .AddBikerScreen > .screenFgContainer > .foreground > .elLine2 {
+    left: -211px;
+    top: 187px;
+    width: 87px;
+    height: 98px;
+  }
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .MensABracketScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+@media (min-width: 568px) {
+  .MensABracketScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .MensABracketScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .MensABracketScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .MensABracketScreen > .layoutFlow > .elImage {
+    position: relative;
+    margin-top: 84px;
+    width: 136px;
+    margin-left: 342px;
+  }
+  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  width: 136px;
+  height: 77px;
+  }
+  
+@media (min-width: 568px) {
+  .MensABracketScreen > .layoutFlow > .elImage {
+    position: relative;
+    margin-top: 84px;
+    width: 136px;
+    margin-left: 342px;
+  }
+  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  width: 136px;
+  height: 77px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .MensABracketScreen > .layoutFlow > .elImage {
+    position: relative;
+    margin-top: 84px;
+    width: 136px;
+    margin-left: 340px;
+  }
+  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  width: 136px;
+  height: 76px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .MensABracketScreen > .layoutFlow > .elImage {
+    position: relative;
+    margin-top: 116px;
+    width: 644px;
+    margin-left: 358px;
+  }
+  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  width: 644px;
+  height: 470px;
+  }
+  
+}
+
+  .MensABracketScreen .elList li {
+    margin-bottom: 5px;
+  }
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .MensABracketScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: -7px;
+    width: 250px;
+    margin-left: 33px;
+  }
+  .MensABracketScreen > .layoutFlow > .elList > * { 
+  width: 250px;
+  }
+  
+@media (min-width: 568px) {
+  .MensABracketScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: -7px;
+    width: 250px;
+    margin-left: 33px;
+  }
+  .MensABracketScreen > .layoutFlow > .elList > * { 
+  width: 250px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .MensABracketScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: -7px;
+    width: 248px;
+    margin-left: 33px;
+  }
+  .MensABracketScreen > .layoutFlow > .elList > * { 
+  width: 248px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .MensABracketScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: -398px;
+    width: 248px;
+    margin-left: 76px;
+  }
+  .MensABracketScreen > .layoutFlow > .elList > * { 
+  width: 248px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .QualifyingScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+@media (min-width: 568px) {
+  .QualifyingScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .QualifyingScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .QualifyingScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+
+  .QualifyingScreen .elList:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .QualifyingScreen .elList .gridItem {
+    float: left;
+    position: relative;
+  }
+
+@media (min-width: 1024px) {
+  .QualifyingScreen .elList .gridItem {
+    width: calc(100% / 2 - 9.0px*(1/2));
+    overflow: hidden;
+  }
+
+  .QualifyingScreen .elList .cols2_0 {
+    margin-right: 9.0px;
+    margin-bottom: 9.0px;
+    clear: left;
+  }
+  .QualifyingScreen .elList .cols2_1 {
+    margin-bottom: 9.0px;
+  }
+  .QualifyingScreen .elList .cols2_1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}
+
+@media (max-width: 1023px) {
+  .QualifyingScreen .elList .gridItem {
+    width: calc(100% / 2 - 9.0px*(1/2));
+    overflow: hidden;
+  }
+
+  .QualifyingScreen .elList .cols2_0 {
+    margin-right: 9.0px;
+    margin-bottom: 9.0px;
+    clear: left;
+  }
+  .QualifyingScreen .elList .cols2_1 {
+    margin-bottom: 9.0px;
+  }
+  .QualifyingScreen .elList .cols2_1:after { }
+  .QualifyingScreen .elList .cols2_1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .QualifyingScreen .elList .gridItem {
+    width: calc(100% / 2 - 9.1px*(1/2));
+    overflow: hidden;
+  }
+
+  .QualifyingScreen .elList .cols2_0 { margin-right: 0; margin-bottom: 0; }
+  .QualifyingScreen .elList .cols2_1 { margin-right: 0; margin-bottom: 0; }
+  .QualifyingScreen .elList .cols2_0 {
+    margin-right: 9.1px;
+    margin-bottom: 9.1px;
+    clear: left;
+  }
+  .QualifyingScreen .elList .cols2_1 {
+    margin-bottom: 9.1px;
+  }
+  .QualifyingScreen .elList .cols2_1:after { }
+  .QualifyingScreen .elList .cols2_1:after { }
+  .QualifyingScreen .elList .cols2_1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}
+
+@media (max-width: 567px) {
+  .QualifyingScreen .elList .gridItem {
+    width: calc(100% / 2 - 9.1px*(1/2));
+    overflow: hidden;
+  }
+
+  .QualifyingScreen .elList .cols2_0 { margin-right: 0; margin-bottom: 0; }
+  .QualifyingScreen .elList .cols2_1 { margin-right: 0; margin-bottom: 0; }
+  .QualifyingScreen .elList .cols2_0 { margin-right: 0; margin-bottom: 0; }
+  .QualifyingScreen .elList .cols2_1 { margin-right: 0; margin-bottom: 0; }
+  .QualifyingScreen .elList .cols2_0 {
+    margin-right: 9.1px;
+    margin-bottom: 9.1px;
+    clear: left;
+  }
+  .QualifyingScreen .elList .cols2_1 {
+    margin-bottom: 9.1px;
+  }
+  .QualifyingScreen .elList .cols2_1:after { }
+  .QualifyingScreen .elList .cols2_1:after { }
+  .QualifyingScreen .elList .cols2_1:after { }
+  .QualifyingScreen .elList .cols2_1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .QualifyingScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: 84px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .QualifyingScreen > .layoutFlow > .elList > * { 
+    width: 100%;
+  }
+  
+@media (min-width: 568px) {
+  .QualifyingScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: 84px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .QualifyingScreen > .layoutFlow > .elList > * { 
+    width: 100%;
+  }
+  
+}
+@media (min-width: 768px) {
+  .QualifyingScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: 83px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .QualifyingScreen > .layoutFlow > .elList > * { 
+    width: 100%;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .QualifyingScreen > .layoutFlow > .elList {
+    position: relative;
+    margin-top: 83px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100.0% - 0px);
+  }
+  .QualifyingScreen > .layoutFlow > .elList > * { 
+    width: 100%;
+  }
+  
+}
+
+.QualifyingScreen .elFab button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .QualifyingScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 100%;
+  }
+  .QualifyingScreen > .layoutFlow > .elFab > * { 
+  margin-left: auto;
+  width: 68px;
+  margin-right: 11px;
+  height: 68px;
+  }
+  
+@media (min-width: 568px) {
+  .QualifyingScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 100%;
+  }
+  .QualifyingScreen > .layoutFlow > .elFab > * { 
+  margin-left: auto;
+  width: 68px;
+  margin-right: 11px;
+  height: 68px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .QualifyingScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 100%;
+  }
+  .QualifyingScreen > .layoutFlow > .elFab > * { 
+  margin-left: auto;
+  width: 68px;
+  margin-right: 11px;
+  height: 68px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .QualifyingScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 84px;
+    width: 100%;
+  }
+  .QualifyingScreen > .layoutFlow > .elFab > * { 
+  margin-left: auto;
+  width: 68px;
+  margin-right: 11px;
+  height: 68px;
+  }
+  
+}
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+@media (min-width: 568px) {
+  .RaceScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .RaceScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .background > .elBackground {
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+}
+
+.RaceScreen .elButton button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .layoutFlow > .elButton {
+    line-height: 35px;
+    position: relative;
+    margin-top: 144px;
+    width: 145px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton > * { 
+  width: 145px;
+  }
+  
+@media (min-width: 568px) {
+  .RaceScreen > .layoutFlow > .elButton {
+    line-height: 35px;
+    position: relative;
+    margin-top: 144px;
+    width: 145px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton > * { 
+  width: 145px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .RaceScreen > .layoutFlow > .elButton {
+    line-height: 35px;
+    position: relative;
+    margin-top: 143px;
+    width: 144px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton > * { 
+  width: 144px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .layoutFlow > .elButton {
+    line-height: 35px;
+    position: relative;
+    margin-top: 145px;
+    width: 144px;
+    margin-left: 518px;
+  }
+  .RaceScreen > .layoutFlow > .elButton > * { 
+  width: 144px;
+  }
+  
+}
+
+.RaceScreen .elButton4 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .layoutFlow > .elButton4 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 145px;
+    margin-left: 166px;
+  }
+  .RaceScreen > .layoutFlow > .elButton4 > * { 
+  width: 145px;
+  }
+  
+@media (min-width: 568px) {
+  .RaceScreen > .layoutFlow > .elButton4 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 145px;
+    margin-left: 166px;
+  }
+  .RaceScreen > .layoutFlow > .elButton4 > * { 
+  width: 145px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .RaceScreen > .layoutFlow > .elButton4 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 144px;
+    margin-left: 164px;
+  }
+  .RaceScreen > .layoutFlow > .elButton4 > * { 
+  width: 144px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .layoutFlow > .elButton4 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 144px;
+    margin-left: 672px;
+  }
+  .RaceScreen > .layoutFlow > .elButton4 > * { 
+  width: 144px;
+  }
+  
+}
+
+.RaceScreen .elButton2 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .layoutFlow > .elButton2 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 60px;
+    width: 145px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton2 > * { 
+  width: 145px;
+  }
+  
+@media (min-width: 568px) {
+  .RaceScreen > .layoutFlow > .elButton2 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 60px;
+    width: 145px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton2 > * { 
+  width: 145px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .RaceScreen > .layoutFlow > .elButton2 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 59px;
+    width: 144px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton2 > * { 
+  width: 144px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .layoutFlow > .elButton2 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 61px;
+    width: 144px;
+    margin-left: 518px;
+  }
+  .RaceScreen > .layoutFlow > .elButton2 > * { 
+  width: 144px;
+  }
+  
+}
+
+.RaceScreen .elButton5 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .layoutFlow > .elButton5 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 145px;
+    margin-left: 166px;
+  }
+  .RaceScreen > .layoutFlow > .elButton5 > * { 
+  width: 145px;
+  }
+  
+@media (min-width: 568px) {
+  .RaceScreen > .layoutFlow > .elButton5 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 145px;
+    margin-left: 166px;
+  }
+  .RaceScreen > .layoutFlow > .elButton5 > * { 
+  width: 145px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .RaceScreen > .layoutFlow > .elButton5 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 144px;
+    margin-left: 164px;
+  }
+  .RaceScreen > .layoutFlow > .elButton5 > * { 
+  width: 144px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .layoutFlow > .elButton5 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 144px;
+    margin-left: 672px;
+  }
+  .RaceScreen > .layoutFlow > .elButton5 > * { 
+  width: 144px;
+  }
+  
+}
+
+.RaceScreen .elButton3 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .layoutFlow > .elButton3 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 55px;
+    width: 145px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton3 > * { 
+  width: 145px;
+  }
+  
+@media (min-width: 568px) {
+  .RaceScreen > .layoutFlow > .elButton3 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 55px;
+    width: 145px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton3 > * { 
+  width: 145px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .RaceScreen > .layoutFlow > .elButton3 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 55px;
+    width: 144px;
+    margin-left: 9px;
+  }
+  .RaceScreen > .layoutFlow > .elButton3 > * { 
+  width: 144px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .layoutFlow > .elButton3 {
+    line-height: 35px;
+    position: relative;
+    margin-top: 57px;
+    width: 144px;
+    margin-left: 518px;
+  }
+  .RaceScreen > .layoutFlow > .elButton3 > * { 
+  width: 144px;
+  }
+  
+}
+
+.RaceScreen .elButton6 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+/* Narrowest size for this element's responsive layout */
+  .RaceScreen > .layoutFlow > .elButton6 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 145px;
+    margin-left: 166px;
+  }
+  .RaceScreen > .layoutFlow > .elButton6 > * { 
+  width: 145px;
+  }
+  
+@media (min-width: 568px) {
+  .RaceScreen > .layoutFlow > .elButton6 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 145px;
+    margin-left: 166px;
+  }
+  .RaceScreen > .layoutFlow > .elButton6 > * { 
+  width: 145px;
+  }
+  
+}
+@media (min-width: 768px) {
+  .RaceScreen > .layoutFlow > .elButton6 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 144px;
+    margin-left: 164px;
+  }
+  .RaceScreen > .layoutFlow > .elButton6 > * { 
+  width: 144px;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .RaceScreen > .layoutFlow > .elButton6 {
+    line-height: 35px;
+    position: relative;
+    margin-top: -36px;
+    width: 144px;
+    margin-left: 672px;
+  }
+  .RaceScreen > .layoutFlow > .elButton6 > * { 
+  width: 144px;
+  }
+  
+}
+
+.WelcomeScreen {
+  max-width: 1281px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+  .WelcomeScreen > .background > .state0_elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+
+.WelcomeScreen .state0_elButton button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .WelcomeScreen > .layoutFlow > .state0_elButton {
+    line-height: 27px;
+    position: relative;
+    margin-top: 186px;
+    width: 127px;
+    margin-left: 579px;
+  }
+  .WelcomeScreen > .layoutFlow > .state0_elButton > * { 
+  width: 127px;
+  }
+  
+
+.WelcomeScreen .state0_elButton2 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .WelcomeScreen > .layoutFlow > .state0_elButton2 {
+    line-height: 27px;
+    position: relative;
+    margin-top: 93px;
+    width: 127px;
+    margin-left: 583px;
+  }
+  .WelcomeScreen > .layoutFlow > .state0_elButton2 > * { 
+  width: 127px;
+  }
+  
+
+.WelcomeScreen {
+  max-width: 1281px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.UglyScreen {
+  max-width: 1281px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+  .UglyScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+
+.UglyScreen .elFab button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .UglyScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: 117px;
+    width: 68px;
+    margin-left: 557px;
+  }
+  .UglyScreen > .layoutFlow > .elFab > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+
+.UglyScreen .elFab2 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .UglyScreen > .layoutFlow > .elFab2 {
+    line-height: 68px;
+    position: relative;
+    margin-top: -70px;
+    width: 68px;
+    margin-left: 33px;
+  }
+  .UglyScreen > .layoutFlow > .elFab2 > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+
+.AddQualifyingTimeScreen {
+  max-width: 1281px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+  .AddQualifyingTimeScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elField {
+    position: relative;
+    margin-top: 87px;
+    width: 226px;
+    margin-left: 456px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elField > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elText {
+    overflow: hidden;
+    position: relative;
+    margin-top: -32px;
+    width: 238px;
+    margin-left: 364px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elText > * { 
+  width: 238px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elField2 {
+    position: relative;
+    margin-top: 33px;
+    width: 226px;
+    margin-left: 454px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elField2 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elText2 {
+    overflow: hidden;
+    position: relative;
+    margin-top: -31px;
+    width: 238px;
+    margin-left: 366px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elText2 > * { 
+  width: 238px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elField3 {
+    position: relative;
+    margin-top: 35px;
+    width: 226px;
+    margin-left: 456px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elField3 > * { 
+  width: 226px;
+  height: 34px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elText3 {
+    overflow: hidden;
+    position: relative;
+    margin-top: -31px;
+    width: 238px;
+    margin-left: 370px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elText3 > * { 
+  width: 238px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elPicker {
+    position: relative;
+    margin-top: 35px;
+    width: 181px;
+    margin-left: 459px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elPicker > * { 
+  width: 181px;
+  }
+  
+
+.AddQualifyingTimeScreen .elFab button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elFab {
+    line-height: 68px;
+    position: relative;
+    margin-top: -4px;
+    width: 68px;
+    margin-left: 764px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elFab > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+
+.AddQualifyingTimeScreen .elFab2 button {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elFab2 {
+    line-height: 68px;
+    position: relative;
+    margin-top: -69px;
+    width: 68px;
+    margin-left: 13px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elFab2 > * { 
+  width: 68px;
+  height: 68px;
+  }
+  
+
+
+  .AddQualifyingTimeScreen > .layoutFlow > .elText4 {
+    overflow: hidden;
+    position: relative;
+    margin-top: -79px;
+    width: 238px;
+    margin-left: 369px;
+  }
+  .AddQualifyingTimeScreen > .layoutFlow > .elText4 > * { 
+  width: 238px;
+  }
+  
+
+.QualifyingUpdatedScreen {
+  max-width: 1281px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+  .QualifyingUpdatedScreen > .background > .elBackground {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100.0%;
+    height: 100%;
+  }
+
+.QualifyingUpdatedScreen .elFab2 {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .QualifyingUpdatedScreen > .screenFgContainer > .foreground > .elFab2 {
+    line-height: 68px;
+    position: absolute;
+    left: 35px;
+    top: 281px;
+    width: 68px;
+    height: 68px;
+  }
+
+.QualifyingUpdatedScreen .elFab {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .QualifyingUpdatedScreen > .screenFgContainer > .foreground > .elFab {
+    line-height: 68px;
+    position: absolute;
+    left: 558px;
+    top: 281px;
+    width: 68px;
+    height: 68px;
+  }
+
+.QualifyingUpdatedScreen .elButton {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .QualifyingUpdatedScreen > .screenFgContainer > .foreground > .elButton {
+    line-height: 35px;
+    position: absolute;
+    left: 110px;
+    top: 138px;
+    width: 145px;
+    height: 35px;
+  }
+
+.QualifyingUpdatedScreen .elButtonCopy {
+  border: 0.0px solid transparent;
+}
+
+
+
+  .QualifyingUpdatedScreen > .screenFgContainer > .foreground > .elButtonCopy {
+    line-height: 35px;
+    position: absolute;
+    left: 109px;
+    top: 204px;
+    width: 145px;
+    height: 35px;
+  }
+

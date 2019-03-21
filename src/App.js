@@ -12,7 +12,9 @@ import QualifyingUpdatedScreen from './QualifyingUpdatedScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 import DataSheet_people from './DataSheet_people.js';
 import DataSheet_menA from './DataSheet_menA.js';
-
+import Amplify, { Storage, API, graphqlOperation } from 'aws-amplify';
+import awsmobile from './aws-exports';
+Amplify.configure(awsmobile);
 
 export default class App extends Component {
   constructor(props) {

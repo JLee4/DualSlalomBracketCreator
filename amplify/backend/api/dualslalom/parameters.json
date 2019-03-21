@@ -1,0 +1,4 @@
+{
+    "AppSyncApiName": "dualslalom",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST"
+}

@@ -1,0 +1,32 @@
+type Tournament @model {
+ 	id: ID!
+ 	name: String!
+ 	racerList: [Racer]
+ 	bracketList: [RaceBracket]
+ }
+
+type RaceBracket @model {
+    id: ID!
+    categoryName: String!
+    match: [Match]
+}
+
+type Match @model {
+    id: ID!
+    matchNumber: Int!
+    racer1ID: ID!
+    racer2ID: ID!
+    racer1Time1: AWSTime!
+    racer1Time2: AWSTime!
+    racer2Time1: AWSTime!
+    racer2Time2: AWSTime!
+    winner: Racer
+}
+
+type Racer @model {
+    id: ID!
+    name: String!
+    category: String!
+    qualificationTime: AWSTime
+    raceNumber: String!
+}

@@ -5,7 +5,6 @@
   "dependencies": {
     "ajv": "^6.0.0",
     "aws-amplify": "^1.1.22",
-    "aws-amplify-react-native": "^2.1.8",
     "graphql": "^14.1.1",
     "minimatch": "^3.0.4",
     "muicss": "^0.9.41",

@@ -15,7 +15,7 @@ export const onCreateTournament = `subscription OnCreateTournament {
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -43,7 +43,7 @@ export const onUpdateTournament = `subscription OnUpdateTournament {
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -71,7 +71,7 @@ export const onDeleteTournament = `subscription OnDeleteTournament {
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -89,7 +89,7 @@ export const onCreateRaceBracket = `subscription OnCreateRaceBracket {
   onCreateRaceBracket {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID
@@ -113,7 +113,7 @@ export const onUpdateRaceBracket = `subscription OnUpdateRaceBracket {
   onUpdateRaceBracket {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID
@@ -137,7 +137,7 @@ export const onDeleteRaceBracket = `subscription OnDeleteRaceBracket {
   onDeleteRaceBracket {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID

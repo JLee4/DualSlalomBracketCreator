@@ -14,6 +14,9 @@ import DataSheet_people from './DataSheet_people.js';
 import DataSheet_menA from './DataSheet_menA.js';
 import Amplify, { Storage, API, graphqlOperation } from 'aws-amplify';
 import awsmobile from './aws-exports';
+import * as queries from './graphql/queries';
+import * as mutations from './graphql/mutations';
+import * as subscriptions from './graphql/subscriptions';
 Amplify.configure(awsmobile);
 
 export default class App extends Component {

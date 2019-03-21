@@ -15,7 +15,7 @@ export const createTournament = `mutation CreateTournament($input: CreateTournam
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -43,7 +43,7 @@ export const updateTournament = `mutation UpdateTournament($input: UpdateTournam
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -71,7 +71,7 @@ export const deleteTournament = `mutation DeleteTournament($input: DeleteTournam
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -89,7 +89,7 @@ export const createRaceBracket = `mutation CreateRaceBracket($input: CreateRaceB
   createRaceBracket(input: $input) {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID
@@ -113,7 +113,7 @@ export const updateRaceBracket = `mutation UpdateRaceBracket($input: UpdateRaceB
   updateRaceBracket(input: $input) {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID
@@ -137,7 +137,7 @@ export const deleteRaceBracket = `mutation DeleteRaceBracket($input: DeleteRaceB
   deleteRaceBracket(input: $input) {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID

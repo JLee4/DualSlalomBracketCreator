@@ -9,6 +9,11 @@
             "UnauthRoleName": "dualslalom-20190320160046-unauthRole",
             "StackName": "dualslalom-20190320160046",
             "StackId": "arn:aws:cloudformation:us-east-2:753485462544:stack/dualslalom-20190320160046/06d5b510-4b4b-11e9-b021-02edfbb31034"
+        },
+        "categories": {
+            "auth": {
+                "cognito07238fa7": {}
+            }
         }
     }
 }

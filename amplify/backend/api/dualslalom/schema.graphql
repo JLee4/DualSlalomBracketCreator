@@ -8,7 +8,7 @@ type Tournament @model {
 type RaceBracket @model {
     id: ID!
     categoryName: String!
-    match: [Match]
+    matches: [Match]
 }
 
 type Match @model {

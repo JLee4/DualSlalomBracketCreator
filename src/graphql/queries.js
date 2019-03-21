@@ -15,7 +15,7 @@ export const getTournament = `query GetTournament($id: ID!) {
     bracketList {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID
@@ -58,7 +58,7 @@ export const getRaceBracket = `query GetRaceBracket($id: ID!) {
   getRaceBracket(id: $id) {
     id
     categoryName
-    match {
+    matches {
       id
       matchNumber
       racer1ID
@@ -87,7 +87,7 @@ export const listRaceBrackets = `query ListRaceBrackets(
     items {
       id
       categoryName
-      match {
+      matches {
         id
         matchNumber
         racer1ID

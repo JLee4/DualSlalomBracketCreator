@@ -11,45 +11,72 @@ export default class Database extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-    };
   }
 
   createTournament = (name) => {
-
+    let details = {
+      name: name
+    };
+    let tournament = API.graphql(graphqlOperation(mutations.createTournament, {input: details}));
+    this.state = { tournament: tournament };
   };
-  updateTournament = (name) => {
 
+  updateTournament = (tournament) => {
+    let updatedTournament = API.graphql(graphqlOperation(mutations.updateTournament, {input: tournament}));
+    this.state = { tournament: updatedTournament };
   };
-  deleteTournament = (name) => {
 
+  createRaceBracket = (categoryName) => {
+    let details = {
+      categoryName: categoryName
+    };
+    let bracket = API.graphql(graphqlOperation(mutations.createRaceBracket, {input: details}));
+    let tournament = this.state.tournament;
+    tournament.bracketList.push(bracket);
   };
-  createRaceBracket = (name) => {
 
+  updateRaceBracket = (bracket) => {
+    API.graphql(graphqlOperation(mutations.updateRaceBracket, {input: bracket}));
   };
-  updateRaceBracket = (name) => {
 
+  deleteRaceBracket = (id) => {
+    API.graphql(graphqlOperation(mutations.deleteRaceBracket, {id: id}));
   };
-  deleteRaceBracket = (name) => {
 
+  createMatch = (bracket, matchNumber, racer1ID, racer2ID) => {
+    let details = {
+      matchNumber: matchNumber,
+      racer1ID: racer1ID,
+      racer2ID: racer2ID
+    };
+    let match = API.graphql(graphqlOperation(mutations.createMatch, {input: details}));
+    bracket.matches.push(match);
   };
-  createMatch = (name) => {
 
+  updateMatch = (match) => {
+    API.graphql(graphqlOperation(mutations.updateMatch, {input: match}));
   };
-  updateMatch = (name) => {
 
+  deleteMatch = (id) => {
+    API.graphql(graphqlOperation(mutations.deleteMatch, {id: id}));
   };
-  deleteMatch = (name) => {
 
+  createRacer = (name, category, raceNumber) => {
+    let details = {
+      name: name,
+      category: category,
+      raceNumber: raceNumber
+    };
+    let racer = API.graphql(graphqlOperation(mutations.createRacer, {input: details}));
+    let tournament = this.state.tournament;
+    tournament.racerList.push(racer);
   };
-  createRacer = (name) => {
 
+  updateRacer = (racer) => {
+    API.graphql(graphqlOperation(mutations.updateRacer, {input: racer}));
   };
-  updateRacer = (name) => {
 
-  };
-  deleteRacer = (name) => {
-
+  deleteRacer = (id) => {
+    API.graphql(graphqlOperation(mutations.deleteRacer, {id: id}));
   };
 }

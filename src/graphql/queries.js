@@ -6,25 +6,21 @@ export const getTournament = `query GetTournament($id: ID!) {
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -39,15 +35,10 @@ export const listTournaments = `query ListTournaments(
       id
       name
       racerList {
-        id
-        name
-        category
-        qualificationTime
-        raceNumber
+        nextToken
       }
       bracketList {
-        id
-        categoryName
+        nextToken
       }
     }
     nextToken
@@ -59,21 +50,17 @@ export const getRaceBracket = `query GetRaceBracket($id: ID!) {
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }
@@ -88,14 +75,7 @@ export const listRaceBrackets = `query ListRaceBrackets(
       id
       categoryName
       matches {
-        id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        nextToken
       }
     }
     nextToken

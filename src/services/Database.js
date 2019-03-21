@@ -1,32 +1,64 @@
 import React, { Component } from 'react';
-import LocalizedStrings from 'react-localization';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
-import awsmobile from './aws-exports';
-import * as queries from './graphql/queries';
-import * as mutations from './graphql/mutations';
-import * as subscriptions from './graphql/subscriptions';
+import awsmobile from './../aws-exports';
+import * as queries from './../graphql/queries';
+import * as mutations from './../graphql/mutations';
+import {Poll} from "./Poll";
 Amplify.configure(awsmobile);
 
 export default class Database extends Component {
 
-  constructor(props) {
-    super(props);
+  static tournament;
+  static onlineService = new Poll();
+
+  static clearLocal() {
+    localStorage.clear();
   }
 
-  createTournament = (name) => {
+  static updateLocal() {
+
+  }
+
+  static awsSync() {
+
+  }
+
+  static persistToStorage() {
+    if (this.onlineService.isOnline()) {
+      this.awsSync();
+    } else {
+      this.updateLocal();
+    }
+  }
+
+  static isOnline() {
+    return this.onlineService.isOnline();
+  }
+
+  static getCurrentTournament() {
+    if (this.tournament) {
+      return this.tournament;
+    } else {
+      return false;
+    }
+  }
+
+  static createTournament(name) {
     let details = {
-      name: name
+      name: name,
     };
-    let tournament = API.graphql(graphqlOperation(mutations.createTournament, {input: details}));
-    this.state = { tournament: tournament };
+    API.graphql(graphqlOperation(mutations.createTournament, {input: details})).then((data) => {
+      Database.tournament = data;
+    });
+
   };
 
-  updateTournament = (tournament) => {
+  static updateTournament(tournament) {
     let updatedTournament = API.graphql(graphqlOperation(mutations.updateTournament, {input: tournament}));
     this.state = { tournament: updatedTournament };
   };
 
-  createRaceBracket = (categoryName) => {
+  static createRaceBracket(categoryName) {
     let details = {
       categoryName: categoryName
     };
@@ -35,15 +67,15 @@ export default class Database extends Component {
     tournament.bracketList.push(bracket);
   };
 
-  updateRaceBracket = (bracket) => {
+  static updateRaceBracket(bracket) {
     API.graphql(graphqlOperation(mutations.updateRaceBracket, {input: bracket}));
   };
 
-  deleteRaceBracket = (id) => {
+  static deleteRaceBracket(id) {
     API.graphql(graphqlOperation(mutations.deleteRaceBracket, {id: id}));
   };
 
-  createMatch = (bracket, matchNumber, racer1ID, racer2ID) => {
+  static createMatch(bracket, matchNumber, racer1ID, racer2ID) {
     let details = {
       matchNumber: matchNumber,
       racer1ID: racer1ID,
@@ -53,15 +85,15 @@ export default class Database extends Component {
     bracket.matches.push(match);
   };
 
-  updateMatch = (match) => {
+  static updateMatch(match) {
     API.graphql(graphqlOperation(mutations.updateMatch, {input: match}));
   };
 
-  deleteMatch = (id) => {
+  static deleteMatch(id) {
     API.graphql(graphqlOperation(mutations.deleteMatch, {id: id}));
   };
 
-  createRacer = (name, category, raceNumber) => {
+  static createRacer(name, category, raceNumber) {
     let details = {
       name: name,
       category: category,
@@ -72,11 +104,13 @@ export default class Database extends Component {
     tournament.racerList.push(racer);
   };
 
-  updateRacer = (racer) => {
+  static updateRacer(racer) {
     API.graphql(graphqlOperation(mutations.updateRacer, {input: racer}));
   };
 
-  deleteRacer = (id) => {
+  static deleteRacer(id) {
     API.graphql(graphqlOperation(mutations.deleteRacer, {id: id}));
   };
+
+  static
 }

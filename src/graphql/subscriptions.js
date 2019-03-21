@@ -6,25 +6,21 @@ export const onCreateTournament = `subscription OnCreateTournament {
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -34,25 +30,21 @@ export const onUpdateTournament = `subscription OnUpdateTournament {
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -62,25 +54,21 @@ export const onDeleteTournament = `subscription OnDeleteTournament {
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -90,21 +78,17 @@ export const onCreateRaceBracket = `subscription OnCreateRaceBracket {
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }
@@ -114,21 +98,17 @@ export const onUpdateRaceBracket = `subscription OnUpdateRaceBracket {
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }
@@ -138,21 +118,17 @@ export const onDeleteRaceBracket = `subscription OnDeleteRaceBracket {
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }

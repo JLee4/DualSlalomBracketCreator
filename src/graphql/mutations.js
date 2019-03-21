@@ -6,25 +6,21 @@ export const createTournament = `mutation CreateTournament($input: CreateTournam
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -34,25 +30,21 @@ export const updateTournament = `mutation UpdateTournament($input: UpdateTournam
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -62,25 +54,21 @@ export const deleteTournament = `mutation DeleteTournament($input: DeleteTournam
     id
     name
     racerList {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
+      items {
+        id
+        name
+        category
+        qualificationTime
+        raceNumber
+      }
+      nextToken
     }
     bracketList {
-      id
-      categoryName
-      matches {
+      items {
         id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
+        categoryName
       }
+      nextToken
     }
   }
 }
@@ -90,21 +78,17 @@ export const createRaceBracket = `mutation CreateRaceBracket($input: CreateRaceB
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }
@@ -114,21 +98,17 @@ export const updateRaceBracket = `mutation UpdateRaceBracket($input: UpdateRaceB
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }
@@ -138,21 +118,17 @@ export const deleteRaceBracket = `mutation DeleteRaceBracket($input: DeleteRaceB
     id
     categoryName
     matches {
-      id
-      matchNumber
-      racer1ID
-      racer2ID
-      racer1Time1
-      racer1Time2
-      racer2Time1
-      racer2Time2
-      winner {
+      items {
         id
-        name
-        category
-        qualificationTime
-        raceNumber
+        matchNumber
+        racer1ID
+        racer2ID
+        racer1Time1
+        racer1Time2
+        racer2Time1
+        racer2Time2
       }
+      nextToken
     }
   }
 }

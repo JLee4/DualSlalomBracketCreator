@@ -12,16 +12,16 @@ import QualifyingUpdatedScreen from './QualifyingUpdatedScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 import DataSheet_people from './DataSheet_people.js';
 import DataSheet_menA from './DataSheet_menA.js';
-import Amplify, { Storage, API, graphqlOperation } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsmobile from './aws-exports';
-import * as queries from './graphql/queries';
-import * as mutations from './graphql/mutations';
-import * as subscriptions from './graphql/subscriptions';
-Amplify.configure(awsmobile);
+import Database from "./services/Database";
 
 export default class App extends Component {
+
   constructor(props) {
     super(props);
+    Amplify.configure(awsmobile);
+    console.log(Database.isOnline());
 
     this.dataSheets = {};
     this.dataSheets['localizationSheet'] = new DataSheet_localizationSheet('localizationSheet', this.dataSheetDidUpdate);
@@ -57,10 +57,12 @@ export default class App extends Component {
   componentDidMount() {
     this.windowDidResize();
     window.addEventListener('resize', this.windowDidResize);
+    window.addEventListener('beforeunload', Database.persistToStorage);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.windowDidResize);
+    window.removeEventListener('beforeunload', Database.persistToStorage);
   }
 
   isLoading() {

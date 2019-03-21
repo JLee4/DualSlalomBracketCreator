@@ -1,14 +1,14 @@
 type Tournament @model {
  	id: ID!
  	name: String!
- 	racerList: [Racer]
- 	bracketList: [RaceBracket]
+ 	racerList: [Racer] @connection
+ 	bracketList: [RaceBracket] @connection
  }
 
 type RaceBracket @model {
     id: ID!
     categoryName: String!
-    matches: [Match]
+    matches: [Match] @connection
 }
 
 type Match @model {

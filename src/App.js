@@ -21,7 +21,29 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     Amplify.configure(awsmobile);
-    console.log(Database.isOnline());
+
+    //TODO: delete when done testing
+    Database.createTournament('test');
+    Database.createRacer('test');
+    Database.createRacer('test');
+    Database.createRacer('test');
+    Database.createRacer('test');
+
+    Database.getCurrentTournament();
+    Database.getRacerList();
+    Database.updateTournament({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
+    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
+    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
+    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
+    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
+
+    Database.createRaceBracket('test');
+    Database.createRaceBracket('test');
+    Database.createMatch('test');
+    Database.createMatch('test');
+    Database.getBracketList();
+
+    //let tournament = Database.getLocal(); //Use this to get from local storage
 
     this.dataSheets = {};
     this.dataSheets['localizationSheet'] = new DataSheet_localizationSheet('localizationSheet', this.dataSheetDidUpdate);

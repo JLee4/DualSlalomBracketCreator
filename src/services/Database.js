@@ -7,6 +7,16 @@ Amplify.configure(awsmobile);
 
 export default class Database extends Component {
 
+  //the schema expected by AWS is in amplify/backend/api/dualslalombracketcre/schema.graphql
+
+  //NOTE: updateMatch() and updateRacer() expects you to modify the object from getMatches() or getRacerList(), respectively
+  //SO, modify the object before calling either update method.
+  //EXAMPLE:
+  // let racerList = Database.getRacerList();
+  // racerList[0].qualificationTime = "00:00:30.500Z";
+  // Database.updateRacer(racerList[0]);
+
+  //template for making changes to storage
   /*
     Database.createTournament('tournament');
     Database.createRacer('racer1', 'A', '1');
@@ -34,7 +44,6 @@ export default class Database extends Component {
     let matches = Database.getMatches();
     Database.deleteMatch(matches[0]);
     Database.deleteRacer(racerList[0]);
-    Database.printVars();
     Database.persistToStorage();
    */
 
@@ -43,10 +52,6 @@ export default class Database extends Component {
   static matches = [];
   static racerDeleteQueue = [];
   static matchDeleteQueue = [];
-
-  static clearLocal() {
-    localStorage.clear();
-  }
 
   static printLocal() {
     console.log(JSON.parse(localStorage.getItem("tournament")));
@@ -64,6 +69,17 @@ export default class Database extends Component {
     console.log(this.matchDeleteQueue);
   }
 
+  /**
+   * Clears the local storage. Use it when making a new tournament because it doesn't
+   * differentiate between most recent and old storage
+   */
+  static clearLocal() {
+    localStorage.clear();
+  }
+
+  /**
+   * replaces all session variables from local. I'd use this for an existing tournament
+   */
   static getLocal() {
     this.tournament = JSON.parse(localStorage.getItem("tournament"));
     this.racerList = JSON.parse(localStorage.getItem("racerList"));
@@ -72,6 +88,9 @@ export default class Database extends Component {
     this.matchDeleteQueue = JSON.parse(localStorage.getItem("matchDeleteQueue"));
   }
 
+  /**
+   * update the local storage with session variables
+   */
   static updateLocal() {
     localStorage.setItem("tournament", JSON.stringify(this.tournament));
     localStorage.setItem("racerList", JSON.stringify(this.racerList));
@@ -80,14 +99,16 @@ export default class Database extends Component {
     localStorage.setItem("matchDeleteQueue", JSON.stringify(this.matchDeleteQueue));
   }
 
+  /**
+   * Syncs all session variables with AWS
+   */
   static awsSync() {
     if (this.tournament.id) {
       this.updateTournament(this.tournament);
     } else if (!this.tournament.id) {
-      return API.graphql(graphqlOperation(mutations.createTournament, {input: this.tournament})).then((resolve) => {
+      API.graphql(graphqlOperation(mutations.createTournament, {input: this.tournament})).then((resolve) => {
         Database.tournament = resolve.data.createTournament;
       }, (reject) => {
-        console.log(reject);
       });
     }
 
@@ -99,7 +120,6 @@ export default class Database extends Component {
         API.graphql(graphqlOperation(mutations.createRacer, {input: racer})).then((resolve) => {
           racer.id = resolve.data.createRacer.id;
         }, (reject) => {
-          console.log(reject);
         });
       }
     }
@@ -139,6 +159,9 @@ export default class Database extends Component {
     }
   }
 
+  /**
+   * Call this if you want to persist to storage both AWS and local storage.
+   */
   static persistToStorage() {
     Database.awsSync();
     Database.updateLocal();
@@ -168,6 +191,11 @@ export default class Database extends Component {
     }
   }
 
+  /**
+   * Call to add a new tournament to session variables and create in AWS if online
+   * @param name as string is required if no tournament object
+   * @param tournament you can pass in a tournament object as well
+   */
   static createTournament(name, tournament) {
     let details = {
       name: name,
@@ -175,24 +203,34 @@ export default class Database extends Component {
     if (tournament) {
       details = tournament;
     }
-    return API.graphql(graphqlOperation(mutations.createTournament, {input: details})).then((resolve) => {
+    API.graphql(graphqlOperation(mutations.createTournament, {input: details})).then((resolve) => {
       Database.tournament = resolve.data.createTournament;
-      return Database.tournament;
     }, (reject) => {
-      //console.log(reject);
       Database.tournament = details;
     });
   };
 
+  /**
+   * Updates the session variable and calls AWS
+   * @param tournament
+   */
   static updateTournament(tournament) {
     API.graphql(graphqlOperation(mutations.updateTournament, {input: tournament})).then((resolve) => {
       Database.tournament = resolve.data.updateTournament;
     }, (reject) => {
-      console.log(reject);
       Database.tournament = tournament;
     });
   };
 
+  /**
+   * Creates a match and calls AWS
+   * also updates the racerIDs with corresponding racerNumbers if racerID exists
+   * @param categoryName as string is required if no match object
+   * @param matchNumber as int is required if no match object
+   * @param racer1Number as string is required if no match object
+   * @param racer2Number as string is required if no match object
+   * @param match you can pass in a match object as well
+   */
   static createMatch(categoryName, matchNumber, racer1Number, racer2Number, match) {
     let details = {
       tournamentID: this.tournament ? this.tournament.id : undefined,
@@ -210,33 +248,37 @@ export default class Database extends Component {
       details.id = resolve.data.createMatch.id;
       if (!details.racer1ID || !details.racer2ID || !details.winnerID) {
         for (let racer of this.racerList) {
-          if (racer.racer1Number === match.racer1Number) {
+          if (racer.racerNumber === match.racer1Number) {
             details.racer1ID = racer.id;
           }
-          if (racer.racer2Number === match.racer2Number) {
+          if (racer.racerNumber === match.racer2Number) {
             details.racer2ID = racer.id;
           }
-          if (racer.winnerRacerNumber === match.winnerRacerNumber) {
+          if (racer.racerNumber === match.winnerRacerNumber) {
             details.winnerID = racer.id;
           }
         }
       }
     }, (reject) => {
-      console.log(reject);
     });
   };
 
+  /**
+   * Updates match and calls AWS
+   * also updates the racerIDs with corresponding racerNumbers if racerID exists
+   * @param match
+   */
   static updateMatch(match) {
     match.tournamentID = this.tournament.id;
     if (!match.racer1ID || !match.racer2ID || !match.winnerID) {
       for (let racer of this.racerList) {
-        if (racer.racer1Number === match.racer1Number) {
+        if (racer.racerNumber === match.racer1Number) {
           match.racer1ID = racer.id;
         }
-        if (racer.racer2Number === match.racer2Number) {
+        if (racer.racerNumber === match.racer2Number) {
           match.racer2ID = racer.id;
         }
-        if (racer.winnerRacerNumber === match.winnerRacerNumber) {
+        if (racer.racerNumber === match.winnerRacerNumber) {
           match.winnerID = racer.id;
         }
       }
@@ -246,6 +288,10 @@ export default class Database extends Component {
     });
   };
 
+  /**
+   * Removes the match and calls AWS
+   * @param match
+   */
   static deleteMatch(match) {
     API.graphql(graphqlOperation(mutations.deleteMatch, {input: match})).then(() => {},
       () => {
@@ -260,6 +306,14 @@ export default class Database extends Component {
     });
   };
 
+
+  /**
+   * Creates a racer and calls AWS
+   * @param name as string is required if no racer object
+   * @param category as string is required if no racer object
+   * @param racerNumber as string is required if no racer object
+   * @param racer if passing an entire racer object
+   */
   static createRacer(name, category, racerNumber, racer) {
     let details = {
       name: name,
@@ -276,10 +330,13 @@ export default class Database extends Component {
       details.id = resolve.data.createRacer.id;
       racer.tournamentID = this.tournament.id;
     }, (reject) => {
-      //console.log(reject);
     });
   };
 
+  /**
+   * Updates racer and calls AWS
+   * @param racer
+   */
   static updateRacer(racer) {
     racer.tournamentID = this.tournament.id;
     API.graphql(graphqlOperation(mutations.updateRacer, {input: racer})).then((resolve) => {
@@ -290,6 +347,10 @@ export default class Database extends Component {
     });
   };
 
+  /**
+   * deletes the racer and syncs it with AWS
+   * @param racer
+   */
   static deleteRacer(racer) {
     API.graphql(graphqlOperation(mutations.deleteRacer, {input: racer})).then(() => {},
       () => {

@@ -1,19 +1,14 @@
 {
     "dualslalom": {
         "awscloudformation": {
-            "AuthRoleName": "dualslalom-20190320160046-authRole",
-            "UnauthRoleArn": "arn:aws:iam::753485462544:role/dualslalom-20190320160046-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::753485462544:role/dualslalom-20190320160046-authRole",
+            "AuthRoleName": "dualslalombracketcre-20190322112307-authRole",
+            "UnauthRoleArn": "arn:aws:iam::753485462544:role/dualslalombracketcre-20190322112307-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::753485462544:role/dualslalombracketcre-20190322112307-authRole",
             "Region": "us-east-2",
-            "DeploymentBucketName": "dualslalom-20190320160046-deployment",
-            "UnauthRoleName": "dualslalom-20190320160046-unauthRole",
-            "StackName": "dualslalom-20190320160046",
-            "StackId": "arn:aws:cloudformation:us-east-2:753485462544:stack/dualslalom-20190320160046/06d5b510-4b4b-11e9-b021-02edfbb31034"
-        },
-        "categories": {
-            "auth": {
-                "cognito07238fa7": {}
-            }
+            "DeploymentBucketName": "dualslalombracketcre-20190322112307-deployment",
+            "UnauthRoleName": "dualslalombracketcre-20190322112307-unauthRole",
+            "StackName": "dualslalombracketcre-20190322112307",
+            "StackId": "arn:aws:cloudformation:us-east-2:753485462544:stack/dualslalombracketcre-20190322112307/8eb646e0-4cb6-11e9-9127-02278d0d93fc"
         }
     }
 }

@@ -5,23 +5,6 @@ export const getTournament = `query GetTournament($id: ID!) {
   getTournament(id: $id) {
     id
     name
-    racerList {
-      items {
-        id
-        name
-        category
-        qualificationTime
-        raceNumber
-      }
-      nextToken
-    }
-    bracketList {
-      items {
-        id
-        categoryName
-      }
-      nextToken
-    }
   }
 }
 `;
@@ -34,49 +17,6 @@ export const listTournaments = `query ListTournaments(
     items {
       id
       name
-      racerList {
-        nextToken
-      }
-      bracketList {
-        nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
-export const getRaceBracket = `query GetRaceBracket($id: ID!) {
-  getRaceBracket(id: $id) {
-    id
-    categoryName
-    matches {
-      items {
-        id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const listRaceBrackets = `query ListRaceBrackets(
-  $filter: ModelRaceBracketFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listRaceBrackets(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      categoryName
-      matches {
-        nextToken
-      }
     }
     nextToken
   }
@@ -85,20 +25,19 @@ export const listRaceBrackets = `query ListRaceBrackets(
 export const getMatch = `query GetMatch($id: ID!) {
   getMatch(id: $id) {
     id
+    tournamentID
+    categoryName
     matchNumber
     racer1ID
     racer2ID
+    racer1Number
+    racer2Number
     racer1Time1
     racer1Time2
     racer2Time1
     racer2Time2
-    winner {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
-    }
+    winnerRacerNumber
+    winnerID
   }
 }
 `;
@@ -110,20 +49,19 @@ export const listMatchs = `query ListMatchs(
   listMatchs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      tournamentID
+      categoryName
       matchNumber
       racer1ID
       racer2ID
+      racer1Number
+      racer2Number
       racer1Time1
       racer1Time2
       racer2Time1
       racer2Time2
-      winner {
-        id
-        name
-        category
-        qualificationTime
-        raceNumber
-      }
+      winnerRacerNumber
+      winnerID
     }
     nextToken
   }
@@ -132,10 +70,11 @@ export const listMatchs = `query ListMatchs(
 export const getRacer = `query GetRacer($id: ID!) {
   getRacer(id: $id) {
     id
+    tournamentID
     name
     category
     qualificationTime
-    raceNumber
+    racerNumber
   }
 }
 `;
@@ -147,10 +86,11 @@ export const listRacers = `query ListRacers(
   listRacers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      tournamentID
       name
       category
       qualificationTime
-      raceNumber
+      racerNumber
     }
     nextToken
   }

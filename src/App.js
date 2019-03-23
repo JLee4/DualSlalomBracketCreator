@@ -22,29 +22,6 @@ export default class App extends Component {
     super(props);
     Amplify.configure(awsmobile);
 
-    //TODO: delete when done testing
-    Database.createTournament('test');
-    Database.createRacer('test');
-    Database.createRacer('test');
-    Database.createRacer('test');
-    Database.createRacer('test');
-
-    Database.getCurrentTournament();
-    Database.getRacerList();
-    Database.updateTournament({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
-    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
-    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
-    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
-    Database.updateRacer({name:'ayyyy', id: 'bd6f2ab9-0227-450b-8198-2e9ecd70b6ef'});
-
-    Database.createRaceBracket('test');
-    Database.createRaceBracket('test');
-    Database.createMatch('test');
-    Database.createMatch('test');
-    Database.getBracketList();
-
-    //let tournament = Database.getLocal(); //Use this to get from local storage
-
     this.dataSheets = {};
     this.dataSheets['localizationSheet'] = new DataSheet_localizationSheet('localizationSheet', this.dataSheetDidUpdate);
     this.dataSheets['people'] = new DataSheet_people('people', this.dataSheetDidUpdate);
@@ -79,12 +56,12 @@ export default class App extends Component {
   componentDidMount() {
     this.windowDidResize();
     window.addEventListener('resize', this.windowDidResize);
-    window.addEventListener('beforeunload', Database.persistToStorage);
+    //window.addEventListener('beforeunload', Database.persistToStorage);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.windowDidResize);
-    window.removeEventListener('beforeunload', Database.persistToStorage);
+    //window.removeEventListener('beforeunload', Database.persistToStorage);
   }
 
   isLoading() {

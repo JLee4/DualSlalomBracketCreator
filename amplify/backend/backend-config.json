@@ -1,6 +1,6 @@
 {
 	"api": {
-		"dualslalom": {
+		"dualslalombracketcre": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
@@ -8,21 +8,9 @@
 			}
 		}
 	},
-	"storage": {
-		"dynamofa9b46f2": {
-			"service": "DynamoDB",
-			"providerPlugin": "awscloudformation"
-		}
-	},
 	"hosting": {
 		"S3AndCloudFront": {
 			"service": "S3AndCloudFront",
-			"providerPlugin": "awscloudformation"
-		}
-	},
-	"auth": {
-		"cognito07238fa7": {
-			"service": "Cognito",
 			"providerPlugin": "awscloudformation"
 		}
 	}

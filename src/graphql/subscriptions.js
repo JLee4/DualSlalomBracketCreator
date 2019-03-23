@@ -5,23 +5,6 @@ export const onCreateTournament = `subscription OnCreateTournament {
   onCreateTournament {
     id
     name
-    racerList {
-      items {
-        id
-        name
-        category
-        qualificationTime
-        raceNumber
-      }
-      nextToken
-    }
-    bracketList {
-      items {
-        id
-        categoryName
-      }
-      nextToken
-    }
   }
 }
 `;
@@ -29,23 +12,6 @@ export const onUpdateTournament = `subscription OnUpdateTournament {
   onUpdateTournament {
     id
     name
-    racerList {
-      items {
-        id
-        name
-        category
-        qualificationTime
-        raceNumber
-      }
-      nextToken
-    }
-    bracketList {
-      items {
-        id
-        categoryName
-      }
-      nextToken
-    }
   }
 }
 `;
@@ -53,173 +19,96 @@ export const onDeleteTournament = `subscription OnDeleteTournament {
   onDeleteTournament {
     id
     name
-    racerList {
-      items {
-        id
-        name
-        category
-        qualificationTime
-        raceNumber
-      }
-      nextToken
-    }
-    bracketList {
-      items {
-        id
-        categoryName
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onCreateRaceBracket = `subscription OnCreateRaceBracket {
-  onCreateRaceBracket {
-    id
-    categoryName
-    matches {
-      items {
-        id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdateRaceBracket = `subscription OnUpdateRaceBracket {
-  onUpdateRaceBracket {
-    id
-    categoryName
-    matches {
-      items {
-        id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteRaceBracket = `subscription OnDeleteRaceBracket {
-  onDeleteRaceBracket {
-    id
-    categoryName
-    matches {
-      items {
-        id
-        matchNumber
-        racer1ID
-        racer2ID
-        racer1Time1
-        racer1Time2
-        racer2Time1
-        racer2Time2
-      }
-      nextToken
-    }
   }
 }
 `;
 export const onCreateMatch = `subscription OnCreateMatch {
   onCreateMatch {
     id
+    tournamentID
+    categoryName
     matchNumber
     racer1ID
     racer2ID
+    racer1Number
+    racer2Number
     racer1Time1
     racer1Time2
     racer2Time1
     racer2Time2
-    winner {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
-    }
+    winnerRacerNumber
+    winnerID
   }
 }
 `;
 export const onUpdateMatch = `subscription OnUpdateMatch {
   onUpdateMatch {
     id
+    tournamentID
+    categoryName
     matchNumber
     racer1ID
     racer2ID
+    racer1Number
+    racer2Number
     racer1Time1
     racer1Time2
     racer2Time1
     racer2Time2
-    winner {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
-    }
+    winnerRacerNumber
+    winnerID
   }
 }
 `;
 export const onDeleteMatch = `subscription OnDeleteMatch {
   onDeleteMatch {
     id
+    tournamentID
+    categoryName
     matchNumber
     racer1ID
     racer2ID
+    racer1Number
+    racer2Number
     racer1Time1
     racer1Time2
     racer2Time1
     racer2Time2
-    winner {
-      id
-      name
-      category
-      qualificationTime
-      raceNumber
-    }
+    winnerRacerNumber
+    winnerID
   }
 }
 `;
 export const onCreateRacer = `subscription OnCreateRacer {
   onCreateRacer {
     id
+    tournamentID
     name
     category
     qualificationTime
-    raceNumber
+    racerNumber
   }
 }
 `;
 export const onUpdateRacer = `subscription OnUpdateRacer {
   onUpdateRacer {
     id
+    tournamentID
     name
     category
     qualificationTime
-    raceNumber
+    racerNumber
   }
 }
 `;
 export const onDeleteRacer = `subscription OnDeleteRacer {
   onDeleteRacer {
     id
+    tournamentID
     name
     category
     qualificationTime
-    raceNumber
+    racerNumber
   }
 }
 `;

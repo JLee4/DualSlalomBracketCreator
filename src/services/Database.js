@@ -8,6 +8,39 @@ Amplify.configure(awsmobile);
 export default class Database extends Component {
 
   //the schema expected by AWS is in amplify/backend/api/dualslalombracketcre/schema.graphql
+  //Schemas: NOTE: the ! (exclamation point) means the member is required (e.g. name: String! means "name" is required)
+  /*
+    type Tournament @model {
+      id: ID!
+      name: String!
+    }
+
+    type Match @model {
+      id: ID!
+      tournamentID: ID
+      categoryName: String!
+      matchNumber: Int!
+      racer1ID: ID
+      racer2ID: ID
+      racer1Number: String!
+      racer2Number: String!
+      racer1Time1: AWSTime
+      racer1Time2: AWSTime
+      racer2Time1: AWSTime
+      racer2Time2: AWSTime
+      winnerRacerNumber: String
+      winnerID: ID
+    }
+
+    type Racer @model {
+      id: ID!
+      tournamentID: ID
+      name: String!
+      category: String!
+      qualificationTime: AWSTime
+      racerNumber: String!
+    }
+   */
 
   //NOTE: updateMatch() and updateRacer() expects you to modify the object from getMatches() or getRacerList(), respectively
   //SO, modify the object before calling either update method.
@@ -15,6 +48,22 @@ export default class Database extends Component {
   // let racerList = Database.getRacerList();
   // racerList[0].qualificationTime = "00:00:30.500Z";
   // Database.updateRacer(racerList[0]);
+
+  //So, the pipeline for using storage is:
+  /*
+   getLocal() if previous session exists ->
+   clearLocal() if new tournament created ->
+   createObject(required params) ->
+   updateObject(required params) if needed ->
+   deleteObject(required params) if needed ->
+   persistToStorage() if offline otherwise createObject, updateObject, deleteObject will push to AWS ->
+   */
+
+  //The order you should create objects in is:
+  /*
+  Tournament -> Racers -> Matches
+  NOTE: createMatch(), updateMatch(), and persistToStorage()/syncAWS() all update the racerIDs if it exists
+   */
 
   //template for making changes to storage
   /*

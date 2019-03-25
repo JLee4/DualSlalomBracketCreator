@@ -6,6 +6,7 @@ import btn_icon_back_addbiker from './images/btn_icon_back_addbiker.png';
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
+import { Stopwatch } from './stopwatch';
 
 
 export default class AddBikerScreen extends Component {
@@ -201,6 +202,8 @@ export default class AddBikerScreen extends Component {
             <input style={style_elField4} type="text" placeholder={this.props.locStrings.addbiker_field4_512253} onChange={this.textInputChanged_field4} value={this.state.field4}  />
           
           </div>
+
+          <Stopwatch />
           
           <div className='actionFont elFab' style={style_elFab_outer}>
             <Button style={style_elFab}  variant="fab" onClick={this.onClick_elFab} >

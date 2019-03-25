@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import LocalizedStrings from 'react-localization';
 import './App.css';
 import AddBikerScreen from './AddBikerScreen.js';
-import MensABracketScreen from './MensABracketScreen.js';
 import QualifyingScreen from './QualifyingScreen.js';
 import RaceScreen from './RaceScreen.js';
 import WelcomeScreen from './WelcomeScreen.js';
@@ -12,6 +11,7 @@ import QualifyingUpdatedScreen from './QualifyingUpdatedScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 import DataSheet_people from './DataSheet_people.js';
 import DataSheet_menA from './DataSheet_menA.js';
+import BracketScreen from "./BracketScreen";
 
 
 export default class App extends Component {
@@ -185,8 +185,8 @@ export default class App extends Component {
           return null;
         case 'addbiker':
           return (<AddBikerScreen {...screenProps} />)
-        case 'mensabracket':
-          return (<MensABracketScreen {...screenProps} />)
+        case 'bracket':
+          return (<BracketScreen {...screenProps} />)
         case 'qualifying':
           return (<QualifyingScreen {...screenProps} />)
         case 'race':

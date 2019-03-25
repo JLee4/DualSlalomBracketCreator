@@ -1023,11 +1023,11 @@
     width: 136px;
     margin-left: 342px;
   }
-  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  .MensABracketScreen > .layoutFlow > .elImage > * {
   width: 136px;
   height: 77px;
   }
-  
+
 @media (min-width: 568px) {
   .MensABracketScreen > .layoutFlow > .elImage {
     position: relative;
@@ -1035,11 +1035,11 @@
     width: 136px;
     margin-left: 342px;
   }
-  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  .MensABracketScreen > .layoutFlow > .elImage > * {
   width: 136px;
   height: 77px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .MensABracketScreen > .layoutFlow > .elImage {
@@ -1048,11 +1048,11 @@
     width: 136px;
     margin-left: 340px;
   }
-  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  .MensABracketScreen > .layoutFlow > .elImage > * {
   width: 136px;
   height: 76px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .MensABracketScreen > .layoutFlow > .elImage {
@@ -1061,11 +1061,11 @@
     width: 644px;
     margin-left: 358px;
   }
-  .MensABracketScreen > .layoutFlow > .elImage > * { 
+  .MensABracketScreen > .layoutFlow > .elImage > * {
   width: 644px;
   height: 470px;
   }
-  
+
 }
 
   .MensABracketScreen .elList li {
@@ -1081,10 +1081,10 @@
     width: 250px;
     margin-left: 33px;
   }
-  .MensABracketScreen > .layoutFlow > .elList > * { 
+  .MensABracketScreen > .layoutFlow > .elList > * {
   width: 250px;
   }
-  
+
 @media (min-width: 568px) {
   .MensABracketScreen > .layoutFlow > .elList {
     position: relative;
@@ -1092,10 +1092,10 @@
     width: 250px;
     margin-left: 33px;
   }
-  .MensABracketScreen > .layoutFlow > .elList > * { 
+  .MensABracketScreen > .layoutFlow > .elList > * {
   width: 250px;
   }
-  
+
 }
 @media (min-width: 768px) {
   .MensABracketScreen > .layoutFlow > .elList {
@@ -1104,10 +1104,10 @@
     width: 248px;
     margin-left: 33px;
   }
-  .MensABracketScreen > .layoutFlow > .elList > * { 
+  .MensABracketScreen > .layoutFlow > .elList > * {
   width: 248px;
   }
-  
+
 }
 @media (min-width: 1024px) {
   .MensABracketScreen > .layoutFlow > .elList {
@@ -1116,7 +1116,7 @@
     width: 248px;
     margin-left: 76px;
   }
-  .MensABracketScreen > .layoutFlow > .elList > * { 
+  .MensABracketScreen > .layoutFlow > .elList > * {
   width: 248px;
   }
   

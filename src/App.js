@@ -46,6 +46,8 @@ export default class App extends Component {
 
     this.finalTime = {};
 
+    this.bracketImage = {};
+
   }
 
   windowDidResize = () => {
@@ -103,6 +105,13 @@ export default class App extends Component {
   }
   getfinalTime() {
     return this.finalTime;
+  }
+
+  setImage(image){
+    this.bracketImage = image;
+  }
+  getImage() {
+    return this.image;
   }
 
   componentWillUnmount() {

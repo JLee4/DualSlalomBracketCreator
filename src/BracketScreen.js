@@ -3,7 +3,7 @@ import './App.css';
 import Component2 from './Component2';
 import img_elImage from './images/BracketScreen_elImage_159122.jpg';
 import btn_icon_835433 from './images/btn_icon_835433.png';
-import img_elImage2 from './images/BracketScreen_elImage2_565346.jpg';
+import MA from './images/MA.png';
 import btn_icon_back_bracket from './images/btn_icon_back_bracket.png';
 
 // UI framework component imports
@@ -35,7 +35,9 @@ export default class BracketScreen extends Component {
       layoutFlowStyle.height = '100vh';
       layoutFlowStyle.overflow = 'hidden';
     }
-        const style_elBackground = {
+    
+    const dataSheet_menA = this.props.dataSheets['menA'];
+    const style_elBackground = {
         width: '100%',
         height: '100%',
      };
@@ -47,22 +49,44 @@ export default class BracketScreen extends Component {
      };
     // Source items and any special components used for list/grid element 'list'.
     
-    
-    const style_elFab = {
-        display: 'block',
-        color: '#fff',
-        textAlign: 'left',
-        backgroundColor: '#7b9eff',
+    const style_elCard_outer = {
+        backgroundColor: 'white',
+        boxShadow: '0.0px 2.3px 18px rgba(0, 0, 0, 0.1600)',
      };
-    const style_elFab_outer = {
-        cursor: 'pointer',
-        pointerEvents: 'auto',
+    const style_elCard2_outer = {
+        backgroundColor: 'white',
+        boxShadow: '0.0px 2.3px 18px rgba(0, 0, 0, 0.1600)',
      };
-    const style_elImage2 = {
-        backgroundImage: 'url('+img_elImage2+')',
+    const style_elImage = {
+        backgroundImage: 'url('+img_elImage+')',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: '50% 50%',
         backgroundSize: 'cover',
+     };
+    const style_elCard3_outer = {
+        backgroundColor: 'white',
+        boxShadow: '0.0px 2.3px 18px rgba(0, 0, 0, 0.1600)',
+     };
+    const style_elCard4_outer = {
+        backgroundColor: 'white',
+        boxShadow: '0.0px 2.3px 18px rgba(0, 0, 0, 0.1600)',
+     };
+     const style_elFab = {
+      display: 'block',
+      color: '#fff',
+      textAlign: 'left',
+      backgroundColor: '#1e2733',
+   };
+  const style_elFab_outer = {
+      cursor: 'pointer',
+      pointerEvents: 'auto',
+   };
+    const style_elImage2 = {
+        backgroundImage: 'url('+MA+')',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: '20% 20%',
+        backgroundSize: 'cover',
+ 
      };
     
     return (
@@ -75,9 +99,33 @@ export default class BracketScreen extends Component {
           
         </div>
         <div className="layoutFlow" style={layoutFlowStyle}>
-         
           
-         
+          
+          <div className='cardBg elCard' style={style_elCard_outer}>
+            <div />
+          
+          </div>
+          
+          <div className='cardBg elCard2' style={style_elCard2_outer}>
+            <div />
+          
+          </div>
+          
+          <div className='elImage'>
+            <div style={style_elImage} />
+          
+          </div>
+          
+          <div className='cardBg elCard3' style={style_elCard3_outer}>
+            <div />
+          
+          </div>
+          
+          <div className='cardBg elCard4' style={style_elCard4_outer}>
+            <div />
+          
+          </div>
+          
           <div className='actionFont elFab' style={style_elFab_outer}>
             <Button style={style_elFab}  variant="fab" onClick={this.onClick_elFab} >
               <img src={btn_icon_835433} alt="" style={{width: '100%', marginTop: '4%'}} />

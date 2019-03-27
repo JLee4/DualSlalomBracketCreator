@@ -5,6 +5,8 @@ import btn_icon_back_pickyourclass from './images/btn_icon_back_pickyourclass.pn
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
+import MA from './images/MA.png';
+import WA from './images/WA.png';
 
 
 export default class RaceScreen extends Component {
@@ -16,6 +18,7 @@ export default class RaceScreen extends Component {
     // Go to screen 'Qualifying'
     this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
     this.props.appActions.setFilterState("Men's A");
+    this.props.appActions.setImage(MA);
 
   
   }
@@ -38,6 +41,7 @@ export default class RaceScreen extends Component {
   onClick_elButton4 = (ev) => {
     this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
     this.props.appActions.setFilterState("Women's A");
+    this.props.appActions.setImage('./images/WA.png');
 
   }
   

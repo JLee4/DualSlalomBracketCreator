@@ -9,6 +9,8 @@ import Controls      from './stopwatch/components/Controls';
 import LapTimeList   from './stopwatch/components/LapTimeList';
 
 import Config        from './stopwatch/constants/Config';
+import timeFormat from './stopwatch/utils/timeFormat';
+
 
 function getDefaultState() {
   return {
@@ -50,12 +52,13 @@ export default class TimerScreen extends Component {
     });
   }
 
-  stop() {
+  stop(time) {
     this.setState({
       isRunning : false 
     }, () => {
       clearInterval(this.timerRef);
     });
+    this.props.appActions.setcheckTime(timeFormat(this.state.time));
   }
 
   reset() {
@@ -111,26 +114,23 @@ export default class TimerScreen extends Component {
     return (
       <div className="AppScreen TimerScreen" style={baseStyle}>
         <div className="background">
-          <div className='appBg containerMinHeight elBackground' style={style_elBackground_outer}>
-            <div style={style_elBackground} />
           
-          </div>
           
         </div>
-        <div className="layoutFlow" style={layoutFlowStyle}>
+        <div style={baseStyle}>
          
-          <div>
+    
               <Timer time={ time } />
               <Controls
                 isRunning={ isRunning } 
                 start={ () => this.start() }
-                stop={ () => this.stop() }
+                stop={ (time) => this.stop(time) }
                 reset={ () => this.reset() }
                 addLapTime={ () => this.addLapTime() }
               />
               <LapTimeList
                 timeList={ timeList } />
-          </div>
+    
           
           <div className='actionFont elFab' style={style_elFab_outer}>
             <Button style={style_elFab}  variant="fab" onClick={this.onClick_elFab} >

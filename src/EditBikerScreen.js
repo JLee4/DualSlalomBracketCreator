@@ -213,7 +213,7 @@ const style_elFab2_outer = {
           
           <div className='baseFont elText4'>
             <div style={style_elText4}>
-              <div></div>
+              <div>{this.props.locStrings.addbiker2_text4_783726}</div>
             </div>
           
           </div>

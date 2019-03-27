@@ -48,18 +48,17 @@ export default class AddBikerScreen extends Component {
     //this.sendData_fab_to_people();
 
     if (this.state.field.length > 1){
-      Database.createRacer(this.state.field, this.state.field3, this.props.appActions.getFilterState(), this.props.appActions.getstoreNewNumber());
+      Database.createRacer(this.state.field, this.state.field3, this.props.appActions.getFilterState(), this.state.field2);
       Database.persistToStorage();
       // Go back in screen navigation history
       this.props.appActions.goBack();
     }
   
+  
   }
 
   onClick_elFab2= (ev) => {
     //this.sendData_fab_to_people();
-    this.props.appActions.setstoreNewNumber("0:00");
-    this.state.field2 = this.props.appActions.getstoreNewNumber()
 
     this.props.appActions.goToScreen('timer', { transitionId: 'fadeIn' });
   
@@ -102,8 +101,8 @@ export default class AddBikerScreen extends Component {
     const style_elField2_outer = {
         pointerEvents: 'auto',
      };
-     
-    const value_field2 = this.props.appActions.getBoolTime() == "1" ? this.props.appActions.getstoreNewNumber() : null;
+     this.state.field2 = this.props.appActions.getBoolTime() == "1" ? this.props.appActions.getcheckTime() : null
+     const value_field2 = this.state.field2;
 
     const style_elField3 = {
         display: 'block',
@@ -152,7 +151,7 @@ export default class AddBikerScreen extends Component {
           </div>
           
           <div className='baseFont elField2' style={style_elField2_outer}>
-            <input style={style_elField2} type="text"  placeholder={this.props.locStrings.addbiker_field2_520357} onChange={this.textInputChanged_field2} value={value_field2 !== undefined ? value_field2 : 'YOYO'}  />
+            <input style={style_elField2} type="text"  placeholder={this.props.locStrings.addbiker_field2_520357} onChange={this.textInputChanged_field2} value={value_field2 !== undefined ? value_field2 : this.state.field2}  />
           
           </div>
           

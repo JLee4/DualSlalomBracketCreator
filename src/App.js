@@ -42,6 +42,10 @@ export default class App extends Component {
 
     this.booltime = {};
 
+    this.checkTime = {};
+
+    this.finalTime = {};
+
   }
 
   windowDidResize = () => {
@@ -85,6 +89,20 @@ export default class App extends Component {
   }
   getBoolTime() {
     return this.booltime;
+  }
+
+  setcheckTime(checkTime) {
+    this.checkTime = checkTime;
+  }
+  getcheckTime() {
+    return this.checkTime;
+  }
+
+  setfinalTime(finalTime) {
+    this.finalTime = finalTime;
+  }
+  getfinalTime() {
+    return this.finalTime;
   }
 
   componentWillUnmount() {

@@ -3,7 +3,7 @@ import './App.css';
 import Component2 from './Component2';
 import img_elImage from './images/BracketScreen_elImage_159122.jpg';
 import btn_icon_835433 from './images/btn_icon_835433.png';
-import MA from './images/MA.png';
+import MA from './images/MensA.png';
 import btn_icon_back_bracket from './images/btn_icon_back_bracket.png';
 
 // UI framework component imports

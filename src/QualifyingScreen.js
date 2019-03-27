@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Component1 from './Component1';
-import btn_icon_251261 from './images/btn_icon_251261.png';
+import QualifyingComponent from './QualifyingComponent';
 import btn_icon_back_qualifying from './images/btn_icon_back_qualifying.png';
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
+import Database from './services/Database.js';
+
 
 
 export default class QualifyingScreen extends Component {
@@ -14,9 +15,11 @@ export default class QualifyingScreen extends Component {
   // Properties used by this component:
   // appActions, deviceInfo
 
-  onClick_elFab = (ev) => {
+  onClick_elButton = (ev) => {
     // Go to screen 'Add Biker'
+    this.props.appActions.setBoolTime("0")
     this.props.appActions.goToScreen('addbiker', { transitionId: 'fadeIn' });
+    
   
   }
   
@@ -42,24 +45,40 @@ export default class QualifyingScreen extends Component {
     const style_elBackground_outer = {
         backgroundColor: '#f6f6f6',
      };
+    const style_elCard_outer = {
+        backgroundColor: '#bdeaee',
+        boxShadow: '0.0px 2.3px 18px rgba(0, 0, 0, 0.1600)',
+     };
+    const style_elButton = {
+        display: 'block',
+        color: 'white',
+        textAlign: 'center',
+     };
+    const style_elButton_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
+     };
     const style_elList = {
         height: 'auto',  // This element is in scroll flow
      };
     // Source items and any special components used for list/grid element 'list'.
     let items_list = [];
     let listComps_list = {};
-    items_list = items_list.concat(this.props.appActions.getDataSheet('people').items);
+    let filterItems_list = items => {
+      // This function filters items for the List / Grid element.
+      // There is a variable named 'items' that provides item values.
+      let filteredItems = [];
+      items.forEach(item =>{;
+          if(item.category.includes(this.props.appActions.getFilterState())){
+                              filteredItems.push(item);
+                            }
+                           });
+      return filteredItems;
+    }
+  
+    items_list = Database.getRacerList();
+   // items_list = items_list.concat(filterItems_list(this.props.appActions.getDataSheet('people').items));
     
-    const style_elFab = {
-        display: 'block',
-        color: '#fff',
-        textAlign: 'left',
-        backgroundColor: '#7ea2ff',
-     };
-    const style_elFab_outer = {
-        cursor: 'pointer',
-        pointerEvents: 'auto',
-     };
     
     return (
       <div className="AppScreen QualifyingScreen" style={baseStyle}>
@@ -71,13 +90,28 @@ export default class QualifyingScreen extends Component {
           
         </div>
         <div className="layoutFlow" style={layoutFlowStyle}>
+          <div className="flowRow flowRow_QualifyingScreen_elCard_760276">
+          <div className='elCard' style={style_elCard_outer}>
+            <div />
+          
+          </div>
+          
+          </div>
+          <div className='actionFont elButton' style={style_elButton_outer}>
+            <Button style={style_elButton}  color="accent" onClick={this.onClick_elButton} >
+              {this.props.locStrings.qualifying_button_239976}
+            </Button>
+          
+          </div>
+          
           <div className='hasNestedComps elList'>
             <div style={style_elList}>
-              {items_list.map((row, index) => {
+            
+              {items_list.map((racer, index) => {
                 let itemClasses = `gridItem cols2_${index % 2}`;
-                let itemComp = (row._componentId) ? listComps_list[row._componentId] : <Component1 dataSheetId={'people'} dataSheetRow={row} {...{ 'Name': row['Name'], 'Time': row['Time'], 'Class': row['Class'], }} appActions={this.props.appActions} deviceInfo={this.props.deviceInfo} locStrings={this.props.locStrings} />;
+                let itemComp = (racer._componentId) ? listComps_list[racer._componentId] : <QualifyingComponent racerDeleted={racer}  {...{ 'Name': racer.name, 'Time': racer.qualificationTime, 'RacerNumber': racer.racerNumber, }} appActions={this.props.appActions} deviceInfo={this.props.deviceInfo} locStrings={this.props.locStrings} />;
                 return (
-                  <div className={itemClasses} key={row.key}>
+                  <div className={itemClasses} key={racer.key}>
                     {itemComp}
                   </div>
                 )
@@ -87,16 +121,9 @@ export default class QualifyingScreen extends Component {
           
           </div>
           
-          <div className='actionFont elFab' style={style_elFab_outer}>
-            <Button style={style_elFab}  variant="fab" onClick={this.onClick_elFab} >
-              <img src={btn_icon_251261} alt="" style={{width: '100%', marginTop: '4%'}} />
-            </Button>
-          
-          </div>
-          
         </div>
         <Appbar className="navBar">
-          <div className="title">Qualifying</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_qualifying} alt="" style={{width: '50%'}} /></div>
+          <div className="title">{'Qualifying for ' + this.props.appActions.getFilterState() + ' category'}  </div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_qualifying} alt="" style={{width: '50%'}} /></div>
         </Appbar>
         
       </div>

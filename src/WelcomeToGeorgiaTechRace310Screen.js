@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import btn_icon_back_welcometogeorgiatechrace310 from './images/btn_icon_back_welcometogeorgiatechrace310.png';
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
@@ -7,7 +8,7 @@ import Appbar from 'muicss/lib/react/appbar';
 import Container from 'muicss/lib/react/container';
 
 
-export default class WelcomeScreen extends Component {
+export default class WelcomeToGeorgiaTechRace310Screen extends Component {
 
   // Properties used by this component:
   // appActions, deviceInfo
@@ -15,8 +16,8 @@ export default class WelcomeScreen extends Component {
   // --- Functions for component state index 0 (1 of 2) --- 
   
   onClick_state0_elButton = (ev) => {
-    // Go to screen 'Qualifying'
-    this.props.appActions.goToScreen('qualifying', { transitionId: 'fadeIn' });
+    // Go to screen 'Pick Your Class'
+    this.props.appActions.goToScreen('pickyourclass', { transitionId: 'fadeIn' });
   
   }
   
@@ -72,7 +73,7 @@ export default class WelcomeScreen extends Component {
      };
     
     return (
-      <Container fluid={true} className="AppScreen WelcomeScreen" style={baseStyle}>
+      <Container fluid={true} className="AppScreen WelcomeToGeorgiaTechRace310Screen" style={baseStyle}>
         <div className="background">
           <div className='appBg containerMinHeight state0_elBackground' style={style_state0_elBackground_outer}>
             <div style={style_state0_elBackground} />
@@ -97,7 +98,7 @@ export default class WelcomeScreen extends Component {
           
         </div>
         <Appbar className="navBar">
-          <div className="title">Welcome!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }></div>
+          <div className="title">Welcome to Georgia Tech Race 3/10!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_welcometogeorgiatechrace310} alt="" style={{width: '50%'}} /></div>
         </Appbar>
         
       </Container>
@@ -121,9 +122,9 @@ export default class WelcomeScreen extends Component {
     
     
     return (
-      <Container fluid={true} className="AppScreen WelcomeScreen" style={baseStyle}>
+      <Container fluid={true} className="AppScreen WelcomeToGeorgiaTechRace310Screen" style={baseStyle}>
         <Appbar className="navBar">
-          <div className="title">Welcome!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }></div>
+          <div className="title">Welcome to Georgia Tech Race 3/10!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_welcometogeorgiatechrace310} alt="" style={{width: '50%'}} /></div>
         </Appbar>
         
       </Container>

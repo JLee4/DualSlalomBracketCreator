@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import btn_icon_235309 from './images/btn_icon_235309.png';
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
@@ -10,6 +11,13 @@ export default class Component1 extends Component {
   // Properties used by this component:
   // name, time, class
 
+  onClick_elButton = (ev) => {
+    // Go to screen 'Edit Biker'
+    this.props.appActions.goToScreen('editbiker', { ...this.props, transitionId: 'fadeIn' });
+  
+  }
+  
+  
   render() {
     // eslint-disable-next-line no-unused-vars
     let baseStyle = {};
@@ -22,6 +30,11 @@ export default class Component1 extends Component {
      };
     const style_elBackground_outer = {
         backgroundColor: '#f6f6f6',
+     };
+    const style_elFab = {
+        display: 'block',
+        color: '(null)',
+        textAlign: 'left',
      };
     const style_elText = {
         fontSize: 19.4,
@@ -43,20 +56,22 @@ export default class Component1 extends Component {
     
     const style_elText3 = {
         fontSize: 15.1,
-        color: '#7ea2ff',
+        color: '#45a29e',
         textAlign: 'center',
      };
     const value_text3 = this.props.Class;
     
     const style_elButton = {
         display: 'block',
+        fontSize: 14.2,
+        fontFamily: "'SFUIText-Regular', sans-serif",
         color: '#fff',
         textAlign: 'center',
-        backgroundColor: '#7ea2ff',
+        backgroundColor: '#1f2833',
      };
-    const style_elButtonCopy = {
-        display: 'block',
-        backgroundColor: 'transparent',
+    const style_elButton_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
      };
     
     return (
@@ -69,6 +84,13 @@ export default class Component1 extends Component {
           
         </div>
         <div className="layoutFlow">
+          <div className='actionFont elFab'>
+            <Button style={style_elFab}  variant="fab" color="accent" >
+              <img src={btn_icon_235309} alt="" style={{width: '100%', marginTop: '4%'}} />
+            </Button>
+          
+          </div>
+          
           <div className='elText'>
             <div style={style_elText}>
               <div>{value_text !== undefined ? value_text : (<span className="propValueMissing">{this.props.locStrings.component1_text_366978}</span>)}</div>
@@ -90,16 +112,13 @@ export default class Component1 extends Component {
           
           </div>
           
-          <div className='actionFont elButton'>
-            <Button style={style_elButton}  >
+          <div className='elButton' style={style_elButton_outer}>
+            <Button style={style_elButton}  onClick={this.onClick_elButton} >
               {this.props.locStrings.component1_button_295553}
             </Button>
           
           </div>
           
-        </div>
-        <div className="foreground">
-          <div className='actionFont elButtonCopy' style={style_elButtonCopy}   />
         </div>
       </div>
     )

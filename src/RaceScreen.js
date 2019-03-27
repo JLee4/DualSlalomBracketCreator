@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import btn_icon_back_race from './images/btn_icon_back_race.png';
+import btn_icon_back_pickyourclass from './images/btn_icon_back_pickyourclass.png';
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
@@ -13,9 +13,46 @@ export default class RaceScreen extends Component {
   // appActions, deviceInfo
 
   onClick_elButton = (ev) => {
-    // Go to screen 'Men's A Bracket'
-    this.props.appActions.goToScreen('mensabracket', { transitionId: 'fadeIn' });
+    // Go to screen 'Qualifying'
+    this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
+    this.props.appActions.setFilterState("Men's A");
+
   
+  }
+  
+  
+  onClick_elButton2 = (ev) => {
+    this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
+    this.props.appActions.setFilterState("Men's B");
+
+  }
+  
+  
+  onClick_elButton3 = (ev) => {
+    this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
+    this.props.appActions.setFilterState("Men's C");
+
+  }
+  
+  
+  onClick_elButton4 = (ev) => {
+    this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
+    this.props.appActions.setFilterState("Women's A");
+
+  }
+  
+  
+  onClick_elButton5 = (ev) => {
+    this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
+    this.props.appActions.setFilterState("Women's B");
+
+  }
+  
+  
+  onClick_elButton6 = (ev) => {
+    this.props.appActions.goToScreen('bracket', { transitionId: 'fadeIn' });
+    this.props.appActions.setFilterState("Women's C");
+
   }
   
   
@@ -41,37 +78,63 @@ export default class RaceScreen extends Component {
      };
     const style_elButton = {
         display: 'block',
-        color: 'white',
+        color: '#fff',
         textAlign: 'center',
+        backgroundColor: '#45a19d',
      };
     const style_elButton_outer = {
         cursor: 'pointer',
         pointerEvents: 'auto',
      };
-    const style_elButton4 = {
-        display: 'block',
-        color: 'white',
-        textAlign: 'center',
-     };
     const style_elButton2 = {
         display: 'block',
-        color: 'white',
+        color: '#fff',
         textAlign: 'center',
+        backgroundColor: '#45a19d',
      };
-    const style_elButton5 = {
-        display: 'block',
-        color: 'white',
-        textAlign: 'center',
+    const style_elButton2_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
      };
     const style_elButton3 = {
         display: 'block',
-        color: 'white',
+        color: '#fff',
         textAlign: 'center',
+        backgroundColor: '#45a19d',
+     };
+    const style_elButton3_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
+     };
+    const style_elButton4 = {
+        display: 'block',
+        color: '#fff',
+        textAlign: 'center',
+        backgroundColor: '#1f2833',
+     };
+    const style_elButton4_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
+     };
+    const style_elButton5 = {
+        display: 'block',
+        color: '#fff',
+        textAlign: 'center',
+        backgroundColor: '#1f2833',
+     };
+    const style_elButton5_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
      };
     const style_elButton6 = {
         display: 'block',
-        color: 'white',
+        color: '#fff',
         textAlign: 'center',
+        backgroundColor: '#1f2833',
+     };
+    const style_elButton6_outer = {
+        cursor: 'pointer',
+        pointerEvents: 'auto',
      };
     
     return (
@@ -85,50 +148,50 @@ export default class RaceScreen extends Component {
         </div>
         <div className="layoutFlow" style={layoutFlowStyle}>
           <div className='actionFont elButton' style={style_elButton_outer}>
-            <Button style={style_elButton}  color="accent" onClick={this.onClick_elButton} >
-              {this.props.locStrings.race_button_31962}
+            <Button style={style_elButton}  onClick={this.onClick_elButton} >
+              {this.props.locStrings.menAPicker}
             </Button>
           
           </div>
           
-          <div className='actionFont elButton4'>
-            <Button style={style_elButton4}  color="accent" >
-              {this.props.locStrings.race_button4_555497}
+          <div className='actionFont elButton2' style={style_elButton2_outer}>
+            <Button style={style_elButton2}  onClick={this.onClick_elButton2} >
+              {this.props.locStrings.menBPicker}
             </Button>
           
           </div>
           
-          <div className='actionFont elButton2'>
-            <Button style={style_elButton2}  color="accent" >
-              {this.props.locStrings.race_button2_26590}
+          <div className='actionFont elButton3' style={style_elButton3_outer}>
+            <Button style={style_elButton3}  onClick={this.onClick_elButton3} >
+              {this.props.locStrings.menCPicker}
             </Button>
           
           </div>
           
-          <div className='actionFont elButton5'>
-            <Button style={style_elButton5}  color="accent" >
-              {this.props.locStrings.race_button5_442151}
+          <div className='actionFont elButton4' style={style_elButton4_outer}>
+            <Button style={style_elButton4}  onClick={this.onClick_elButton4} >
+              {this.props.locStrings.womenAPicker}
             </Button>
           
           </div>
           
-          <div className='actionFont elButton3'>
-            <Button style={style_elButton3}  color="accent" >
-              {this.props.locStrings.race_button3_1019834}
+          <div className='actionFont elButton5' style={style_elButton5_outer}>
+            <Button style={style_elButton5}  onClick={this.onClick_elButton5} >
+              {this.props.locStrings.womenBPicker}
             </Button>
           
           </div>
           
-          <div className='actionFont elButton6'>
-            <Button style={style_elButton6}  color="accent" >
-              {this.props.locStrings.race_button6_349885}
+          <div className='actionFont elButton6' style={style_elButton6_outer}>
+            <Button style={style_elButton6}  onClick={this.onClick_elButton6} >
+              {this.props.locStrings.womenCPicker}
             </Button>
           
           </div>
           
         </div>
         <Appbar className="navBar">
-          <div className="title">Race</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_race} alt="" style={{width: '50%'}} /></div>
+          <div className="title">Which Bracket Would You Like To View?</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_pickyourclass} alt="" style={{width: '50%'}} /></div>
         </Appbar>
         
       </div>

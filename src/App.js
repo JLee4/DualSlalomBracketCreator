@@ -14,11 +14,13 @@ import TimerScreen from './TimerScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 import DataSheet_people from './DataSheet_people.js';
 import DataSheet_bracketTypes from './DataSheet_bracketTypes.js';
+import Database from "./services/Database";
 
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+    Database.getLocal();
     this.currentRacer = {};
     this.storeNewName = {};
     this.storeNewNumber = {};

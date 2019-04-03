@@ -12,10 +12,10 @@ type Match @model {
 	racer2ID: ID
 	racer1Number: String!
 	racer2Number: String!
-	racer1Time1: AWSTime
-	racer1Time2: AWSTime
-	racer2Time1: AWSTime
-	racer2Time2: AWSTime
+	racer1Time1: String
+	racer1Time2: String
+	racer2Time1: String
+	racer2Time2: String
 	winnerRacerNumber: String
 	winnerID: ID
 }
@@ -25,6 +25,6 @@ type Racer @model {
 	tournamentID: ID
 	name: String!
 	category: String!
-	qualificationTime: AWSTime
+	qualificationTime: String
 	racerNumber: String!
 }

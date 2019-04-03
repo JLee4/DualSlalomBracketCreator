@@ -8,7 +8,7 @@ const awsmobile = {
     "aws_appsync_apiKey": "da2-3wjgra6m7vclpchwrri5iezrc4",
     "aws_content_delivery_bucket": "uallalomracketre-20190323001259-hostingbucket-dualslalom",
     "aws_content_delivery_bucket_region": "us-east-2",
-    "aws_content_delivery_url": "http://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3-website.us-east-2.amazonaws.com"
+    "aws_content_delivery_url": "https://d3ghbzwjrjydp1.cloudfront.net"
 };
 
 

@@ -20,7 +20,7 @@ export default class AddBikerScreen extends Component {
 
   constructor(props) {
     super(props);
-    
+    Database.persistToStorage();
     this.state = {
       field2: null, //time
       field: null,  //name
@@ -49,7 +49,6 @@ export default class AddBikerScreen extends Component {
 
     if (this.state.field.length > 1){
       Database.createRacer(this.state.field, this.state.field3, this.props.appActions.getFilterState(), this.state.field2);
-      Database.persistToStorage();
       // Go back in screen navigation history
       this.props.appActions.goBack();
     }

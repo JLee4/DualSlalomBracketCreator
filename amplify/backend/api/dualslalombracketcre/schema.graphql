@@ -6,7 +6,7 @@ type Tournament @model {
 type Match @model {
 	id: ID!
 	tournamentID: ID
-	categoryName: String!
+	category: String!
 	matchNumber: Int!
 	racer1ID: ID
 	racer2ID: ID

@@ -85,6 +85,7 @@ export const createRacer = `mutation CreateRacer($input: CreateRacerInput!) {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }
@@ -96,6 +97,7 @@ export const updateRacer = `mutation UpdateRacer($input: UpdateRacerInput!) {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }
@@ -107,6 +109,7 @@ export const deleteRacer = `mutation DeleteRacer($input: DeleteRacerInput!) {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }

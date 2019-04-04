@@ -24,10 +24,10 @@ export default class Database extends Component {
       racer2ID: ID
       racer1Number: String!
       racer2Number: String!
-      racer1Time1: AWSTime
-      racer1Time2: AWSTime
-      racer2Time1: AWSTime
-      racer2Time2: AWSTime
+      racer1Time1: String
+      racer1Time2: String
+      racer2Time1: String
+      racer2Time2: String
       winnerRacerNumber: String
       winnerID: ID
     }
@@ -37,7 +37,7 @@ export default class Database extends Component {
       tournamentID: ID
       name: String!
       category: String!
-      qualificationTime: AWSTime
+      qualificationTime: String
       racerNumber: String!
     }
    */
@@ -234,6 +234,12 @@ export default class Database extends Component {
 
   static getRacerList() {
     if (this.racerList) {
+      this.racerList.sort((a, b) => {
+        if (!a.qualificationTime || !b.qualificationTime) {
+          return parseInt(a.racerNumber) - parseInt(b.racerNumber);
+        }
+        return new Date('1970-01-01T00:' + a.qualificationTime + 'Z') - new Date('1970-01-01T00:' + b.qualificationTime + 'Z');
+      });
       return this.racerList;
     } else {
       return false;
@@ -276,17 +282,13 @@ export default class Database extends Component {
    * also updates the racerIDs with corresponding racerNumbers if racerID exists
    * @param categoryName as string is required if no match object
    * @param matchNumber as int is required if no match object
-   * @param racer1Number as string is required if no match object
-   * @param racer2Number as string is required if no match object
    * @param match you can pass in a match object as well
    */
-  static createMatch(categoryName, matchNumber, racer1Number, racer2Number, match) {
+  static createMatch(categoryName, matchNumber, match) {
     let details = {
       tournamentID: this.tournament ? this.tournament.id : undefined,
       categoryName: categoryName,
       matchNumber: matchNumber,
-      racer1Number: racer1Number,
-      racer2Number: racer2Number
     };
     if (match) {
       details = match;
@@ -413,4 +415,20 @@ export default class Database extends Component {
         Database.racerList = Database.racerList.filter(oldRacer => oldRacer.racerNumber !== racer.racerNumber);
     });
   };
+
+  static getRacersByCategory(category) {
+    this.racerList.sort((a, b) => {
+      if (!a.qualificationTime || !b.qualificationTime) {
+        return parseInt(a.racerNumber) - parseInt(b.racerNumber);
+      }
+      return new Date('1970-01-01T00:' + a.qualificationTime + 'Z') - new Date('1970-01-01T00:' + b.qualificationTime + 'Z');
+    });
+    let categoryRacers = this.racerList.filter(racer => racer.category === category);
+    for (let i = 0; i < categoryRacers.length; i++) {
+      categoryRacers[i].seedNumber = i + 1;
+      this.updateRacer(categoryRacers[i]);
+    }
+    console.log(categoryRacers);
+    return categoryRacers;
+  }
 }

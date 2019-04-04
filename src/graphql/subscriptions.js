@@ -85,6 +85,7 @@ export const onCreateRacer = `subscription OnCreateRacer {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }
@@ -96,6 +97,7 @@ export const onUpdateRacer = `subscription OnUpdateRacer {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }
@@ -107,6 +109,7 @@ export const onDeleteRacer = `subscription OnDeleteRacer {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }

@@ -10,8 +10,8 @@ type Match @model {
 	matchNumber: Int!
 	racer1ID: ID
 	racer2ID: ID
-	racer1Number: String!
-	racer2Number: String!
+	racer1Number: String
+	racer2Number: String
 	racer1Time1: String
 	racer1Time2: String
 	racer2Time1: String
@@ -25,6 +25,7 @@ type Racer @model {
 	tournamentID: ID
 	name: String!
 	category: String!
+	seedNumber: Int
 	qualificationTime: String
 	racerNumber: String!
 }

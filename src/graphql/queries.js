@@ -73,6 +73,7 @@ export const getRacer = `query GetRacer($id: ID!) {
     tournamentID
     name
     category
+    seedNumber
     qualificationTime
     racerNumber
   }
@@ -89,6 +90,7 @@ export const listRacers = `query ListRacers(
       tournamentID
       name
       category
+      seedNumber
       qualificationTime
       racerNumber
     }

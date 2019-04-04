@@ -62,23 +62,10 @@ export default class QualifyingScreen extends Component {
         height: 'auto',  // This element is in scroll flow
      };
     // Source items and any special components used for list/grid element 'list'.
-    let items_list = [];
     let listComps_list = {};
-    let filterItems_list = items => {
-      // This function filters items for the List / Grid element.
-      // There is a variable named 'items' that provides item values.
-      let filteredItems = [];
-      items.forEach(item =>{;
-          if(item.category.includes(this.props.appActions.getFilterState())){
-                              filteredItems.push(item);
-                            }
-                           });
-      return filteredItems;
-    }
-  
-    items_list = Database.getRacerList();
+
+    let items_list = Database.getRacersByCategory(this.props.appActions.getFilterState());
    // items_list = items_list.concat(filterItems_list(this.props.appActions.getDataSheet('people').items));
-    
     
     return (
       <div className="AppScreen QualifyingScreen" style={baseStyle}>

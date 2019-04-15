@@ -5,10 +5,13 @@ import img_elImage from './images/BracketScreen_elImage_159122.jpg';
 import btn_icon_835433 from './images/btn_icon_835433.png';
 import MA from './images/MensA.png';
 import btn_icon_back_bracket from './images/btn_icon_back_bracket.png';
+import database from './services/Database'
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
+import {createMatch} from "./graphql/mutations";
+import {NULL} from "graphql/language/kinds";
 
 
 export default class BracketScreen extends Component {
@@ -145,6 +148,146 @@ export default class BracketScreen extends Component {
         
       </div>
     )
+  }
+
+    /**
+     * Initializes all matches(for the whole bracket) populating the first round based on number of riders given and category
+     *
+     * @param category Category for this screen
+     * @param numRiders Selected number of riders from the UI selection
+     * @return Initialized matches
+     */
+  createMatches(category, numRiders) {
+      let numMatches = numRiders - 1;
+      let tournamentID = "ID";
+      let matchID = 0;
+
+      let matchList = [numMatches];
+
+      // Initialize all empty matches for the whole bracket
+      for (let i = 0; i < numMatches; i++) {
+          let match = {matchNumber: i, category: category};
+          matchList[i] = match;
+          database.createMatch(category, i, match)
+      }
+
+      let racerList = database.getRacersByCategory(category);
+
+      // Populate empty matches with racerID's
+      let seed1Index = 0;
+      let seed2Index = numRiders - 1;
+      let matchIndex = numMatches - 1;
+      // First half of first round
+      for (let i =  0; i < numRiders / 4; i++) {
+          matchList[i].racer1ID = racerList[seed1Index].id;
+          matchList[i].racer2ID = racerList[seed2Index].id;
+          matchList[i].racer1Number = racerList[seed1Index].racerNumber;
+          matchList[i].racer2Number = racerList[seed2Index].racerNumber;
+          database.updateMatch(matchList[i]);
+          seed1Index += 2;
+          seed2Index -= 2;
+          matchIndex -= 1;
+      }
+
+      /* Ex: 16 riders: In the loop above, seed1Index ended with value of 8 and seed2Index with value of 7.
+             To populate the lower half of the first round of brackets, we decrement seed1Index by 1 and increment
+             seed2Index by 1. From here, we decrement seed1Index by 2 and increment seed2Index by 2 instead of
+             incrementing and decrementing respectively as in the first half.
+       */
+      seed1Index -= 1;
+      seed2Index += 1;
+      for (let i = 0; i < numRiders / 4; i++) {
+          matchList[i].racer1ID = racerList[seed1Index].id;
+          matchList[i].racer2ID = racerList[seed2Index].id;
+          matchList[i].racer1Number = racerList[seed1Index].racerNumber;
+          matchList[i].racer2Number = racerList[seed2Index].racerNumber;
+          database.updateMatch(matchList[i]);
+          seed1Index -= 2;
+          seed2Index += 2;
+          matchIndex -= 1;
+      }
+      return matchList
+  }
+
+    /**
+     * Updates a match based on times for racer1 and racer2. If either are null, then it does not update the time for
+     * that rider in the match. If both times for a rider are populated in the match, future updates for that rider's
+     * time only update time2 for that rider.
+     *
+     * If both times for the match are filled for both riders, the winner of the match is updated. Ties go to racer1.
+     *
+     * @param match Match to input times for riders
+     * @param racer1Time Time to input for racer1. If null, does nothing.
+     * @param racer2Time Time to input for racer2. If null, does nothing.
+     */
+  inputRaceTime(match, racer1Time, racer2Time) {
+      if (racer1Time != null) {
+          if (match.racer1Time1 == null) {
+              match.racer1Time1 = racer1Time;
+          } else {
+              match.racer1Time2 = racer1Time;
+          }
+      }
+      if (racer2Time != null) {
+          if (match.racer2Time1 == null) {
+              match.racer2Time1 = racer1Time;
+          } else {
+              match.racer2Time2 = racer1Time;
+          }
+      }
+
+      // Check for a winner
+      if (match.racer1Time1 != null && match.racer1Time2 != null && match.racer2Time1 != null && match.racer2Time2 != null) {
+          let racer1TimeSplit1 = match.racer1Time1.split(":");
+          let racer1TimeSplit2 = match.racer1Time2.split(":");
+          let racer2TimeSplit1 = match.racer2Time1.split(":");
+          let racer2TimeSplit2 = match.racer2Time2.split(":");
+
+          let racer1Total = 0;
+          racer1Total += parseInt(racer1TimeSplit1[0]) * 60000;
+          racer1Total += parseInt(racer1TimeSplit2[0]) * 60000;
+          racer1Total += parseInt(racer1TimeSplit1[1]) * 1000;
+          racer1Total += parseInt(racer1TimeSplit2[1]) * 1000;
+          racer1Total += parseInt(racer1TimeSplit1[2]);
+          racer1Total += parseInt(racer1TimeSplit2[2]);
+
+          let racer2Total = 0;
+          racer2Total += parseInt(racer2TimeSplit1[0]) * 60000;
+          racer2Total += parseInt(racer2TimeSplit2[0]) * 60000;
+          racer2Total += parseInt(racer2TimeSplit1[1]) * 1000;
+          racer2Total += parseInt(racer2TimeSplit2[1]) * 1000;
+          racer2Total += parseInt(racer2TimeSplit1[2]);
+          racer2Total += parseInt(racer2TimeSplit2[2]);
+
+          // Determines who had the lowest to be the winner. Ties got to racer1.
+          if (racer1Total > racer2Total) {
+              match.winnerID = match.racer2ID;
+              match.winnerRacerNumber = match.racer2Number;
+          } else {
+              match.winnerID = match.racer1ID;
+              match.winnerRacerNumber = match.racer1Number;
+          }
+
+
+          // TODO: get nextMatch somehow
+          let nextMatch;
+
+          // populate next match
+          if (match.matchNumber != 0) {
+              let nextMatchNumber = (match.matchNumber - 1) / 2;
+              if (match.matchNumber % 2 == 0) {
+                  nextMatch.racer1Number = match.winnerRacerNumber;
+                  nextMatch.racer1ID = match.winnerID;
+              } else {
+                  nextMatch.racer2Number = match.winnerRacerNumber;
+                  nextMatch.racer2ID = match.winnerID;
+              }
+          }
+
+          // TODO: Update nextMatch somehow
+          database.updateMatch(nextMatch);
+      }
+      database.updateMatch(match);
   }
   
 

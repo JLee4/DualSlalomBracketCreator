@@ -60,6 +60,14 @@ export default class DataSheet_people extends DataSheetBase {
     item['Number'] = "7";
     item['Class'] = "M A";
     item.key = key++;
+    
+    item = {};
+    this.items.push(item);
+    item['Name'] = "Mark";
+    item['Time'] = "1:09";
+    item['Number'] = "16";
+    item['Class'] = "M A";
+    item.key = key++;
   }
 
 }

@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
-import btn_icon_935917 from './images/btn_icon_935917.png';
-import btn_icon_1013259 from './images/btn_icon_1013259.png';
+import btn_icon_back_welcometogeorgiatech41 from './images/btn_icon_back_welcometogeorgiatech41.png';
 
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
-import Container from 'muicss/lib/react/container';
 
 
-export default class UglyScreen extends Component {
+export default class WelcomeToGeorgiaTech41Screen extends Component {
 
   // Properties used by this component:
   // appActions, deviceInfo
 
-  onClick_elFab = (ev) => {
-    // Go to screen 'Add Qualifying Time'
-    this.props.appActions.goToScreen('addqualifyingtime', { transitionId: 'fadeIn' });
+  onClick_elButton = (ev) => {
+    // Go to screen 'Pick Your Class'
+    this.props.appActions.goToScreen('pickyourclass', { transitionId: 'fadeIn' });
   
   }
   
   
-  onClick_elFab2 = (ev) => {
-    // Go back in screen navigation history
-    this.props.appActions.goBack();
+  onClick_elButton2 = (ev) => {
+    // Go to screen 'Race'
+    this.props.appActions.goToScreen('race', { transitionId: 'fadeIn' });
   
   }
   
@@ -48,29 +46,29 @@ export default class UglyScreen extends Component {
     const style_elBackground_outer = {
         backgroundColor: '#f6f6f6',
      };
-    const style_elFab = {
+    const style_elButton = {
         display: 'block',
-        fontSize: 0.0,
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif',
-        color: '(null)',
-        textAlign: 'left',
+        color: '#fff',
+        textAlign: 'center',
+        backgroundColor: '#45a19d',
      };
-    const style_elFab_outer = {
+    const style_elButton_outer = {
         cursor: 'pointer',
         pointerEvents: 'auto',
      };
-    const style_elFab2 = {
+    const style_elButton2 = {
         display: 'block',
-        color: '(null)',
-        textAlign: 'left',
+        color: '#fff',
+        textAlign: 'center',
+        backgroundColor: '#1f2833',
      };
-    const style_elFab2_outer = {
+    const style_elButton2_outer = {
         cursor: 'pointer',
         pointerEvents: 'auto',
      };
     
     return (
-      <Container fluid={true} className="AppScreen UglyScreen" style={baseStyle}>
+      <div className="AppScreen WelcomeToGeorgiaTech41Screen" style={baseStyle}>
         <div className="background">
           <div className='appBg containerMinHeight elBackground' style={style_elBackground_outer}>
             <div style={style_elBackground} />
@@ -79,26 +77,26 @@ export default class UglyScreen extends Component {
           
         </div>
         <div className="layoutFlow" style={layoutFlowStyle}>
-          <div className='elFab' style={style_elFab_outer}>
-            <Button style={style_elFab}  variant="fab" color="accent" onClick={this.onClick_elFab} >
-              <img src={btn_icon_935917} alt="" style={{width: '100%', marginTop: '4%'}} />
+          <div className='actionFont elButton' style={style_elButton_outer}>
+            <Button style={style_elButton}  onClick={this.onClick_elButton} >
+              {this.props.locStrings.welcometogeorgiatech41_button_947234}
             </Button>
           
           </div>
           
-          <div className='actionFont elFab2' style={style_elFab2_outer}>
-            <Button style={style_elFab2}  variant="fab" color="accent" onClick={this.onClick_elFab2} >
-              <img src={btn_icon_1013259} alt="" style={{width: '100%', marginTop: '4%'}} />
+          <div className='actionFont elButton2' style={style_elButton2_outer}>
+            <Button style={style_elButton2}  onClick={this.onClick_elButton2} >
+              {this.props.locStrings.welcometogeorgiatech41_button2_802136}
             </Button>
           
           </div>
           
         </div>
         <Appbar className="navBar">
-          <div className="title">ugly</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }></div>
+          <div className="title">Welcome to Georgia Tech 4/1!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_welcometogeorgiatech41} alt="" style={{width: '50%'}} /></div>
         </Appbar>
         
-      </Container>
+      </div>
     )
   }
   

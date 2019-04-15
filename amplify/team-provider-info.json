@@ -1,0 +1,14 @@
+{
+    "dualslalom": {
+        "awscloudformation": {
+            "AuthRoleName": "dualslalombracketcre-20190322112307-authRole",
+            "UnauthRoleArn": "arn:aws:iam::753485462544:role/dualslalombracketcre-20190322112307-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::753485462544:role/dualslalombracketcre-20190322112307-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "dualslalombracketcre-20190322112307-deployment",
+            "UnauthRoleName": "dualslalombracketcre-20190322112307-unauthRole",
+            "StackName": "dualslalombracketcre-20190322112307",
+            "StackId": "arn:aws:cloudformation:us-east-2:753485462544:stack/dualslalombracketcre-20190322112307/8eb646e0-4cb6-11e9-9127-02278d0d93fc"
+        }
+    }
+}

@@ -1,39 +1,54 @@
 import React, { Component } from 'react';
 import LocalizedStrings from 'react-localization';
 import './App.css';
+import BracketExportedScreen from './BracketExportedScreen.js';
 import AddBikerScreen from './AddBikerScreen.js';
-import MensABracketScreen from './MensABracketScreen.js';
+import BracketScreen from './BracketScreen.js';
 import QualifyingScreen from './QualifyingScreen.js';
 import RaceScreen from './RaceScreen.js';
-import WelcomeScreen from './WelcomeScreen.js';
-import UglyScreen from './UglyScreen.js';
-import AddQualifyingTimeScreen from './AddQualifyingTimeScreen.js';
-import QualifyingUpdatedScreen from './QualifyingUpdatedScreen.js';
+import PickYourClassScreen from './PickYourClassScreen.js';
+import WelcomeToGeorgiaTech41Screen from './WelcomeToGeorgiaTech41Screen.js';
+import MTBracketScreen from './MTBracketScreen.js';
+import EditBikerScreen from './EditBikerScreen.js';
+import TimerScreen from './TimerScreen.js';
 import DataSheet_localizationSheet from './DataSheet_localizationSheet.js';
 import DataSheet_people from './DataSheet_people.js';
-import DataSheet_menA from './DataSheet_menA.js';
+import DataSheet_bracketTypes from './DataSheet_bracketTypes.js';
+import Database from "./services/Database";
 
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-
+    Database.getLocal();
+    this.currentRacer = {};
+    this.storeNewName = {};
+    this.storeNewNumber = {};
     this.dataSheets = {};
     this.dataSheets['localizationSheet'] = new DataSheet_localizationSheet('localizationSheet', this.dataSheetDidUpdate);
     this.dataSheets['people'] = new DataSheet_people('people', this.dataSheetDidUpdate);
-    this.dataSheets['menA'] = new DataSheet_menA('menA', this.dataSheetDidUpdate);
+    this.dataSheets['bracketTypes'] = new DataSheet_bracketTypes('bracketTypes', this.dataSheetDidUpdate);
 
     this.dataSlots = {};
     this.dataSlots['ds_activeLang'] = "en";
-
+    this.dataSlots['ds_bracket'] = "";
+    this.filterState = {};
     this.updateLocalizationFromDataSheet(this.dataSheets['localizationSheet']);
 
     this.state = {
-      currentScreen: 'welcome',
+      currentScreen: 'mtbracket',
       currentScreenProps: {},
       screenTransitionForward: true,
     }
     this.screenHistory = [ {...this.state} ];
+
+    this.booltime = {};
+
+    this.checkTime = {};
+
+    this.finalTime = {};
+
+    this.bracketImage = {};
 
   }
 
@@ -54,6 +69,53 @@ export default class App extends Component {
     window.addEventListener('resize', this.windowDidResize);
   }
 
+  setCurrentRacer(currentRacer) {
+    this.currentRacer = currentRacer;
+  }
+  getCurrentRacer() {
+    return this.currentRacer;
+  }
+  setstoreNewName(storeNewName) {
+    this.storeNewName = storeNewName;
+  }
+  getstoreNewName() {
+    return this.storeNewName;
+  }
+  setstoreNewNumber(storeNewNumber) {
+    this.storeNewNumber = storeNewNumber;
+  }
+  getstoreNewNumber() {
+    return this.storeNewNumber;
+  }
+
+  setBoolTime(booltime) {
+    this.booltime = booltime;
+  }
+  getBoolTime() {
+    return this.booltime;
+  }
+
+  setcheckTime(checkTime) {
+    this.checkTime = checkTime;
+  }
+  getcheckTime() {
+    return this.checkTime;
+  }
+
+  setfinalTime(finalTime) {
+    this.finalTime = finalTime;
+  }
+  getfinalTime() {
+    return this.finalTime;
+  }
+
+  setImage(image){
+    this.bracketImage = image;
+  }
+  getImage() {
+    return this.image;
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.windowDidResize);
   }
@@ -61,7 +123,12 @@ export default class App extends Component {
   isLoading() {
     return this.state.loading;
   }
-
+  setFilterState(filterState) {
+    this.filterState = filterState;
+  }
+  getFilterState() {
+    return this.filterState;
+  }
   goToScreen = (screenId, props) => {
     // This method is the default implementation and could be customized by a navigation plugin.
 
@@ -179,26 +246,39 @@ export default class App extends Component {
           screenFormatId: this.state.screenFormatId
         },
         'ds_activeLang': this.dataSlots['ds_activeLang'],
+        'ds_bracket': this.dataSlots['ds_bracket'],
       };
+      // A data sheet row was specified as the data source for this screen, so carry those props + 'dataSheetRow'.
+      const dataSheetRow_EditBikerScreen = this.dataSheets['localizationSheet'].items[0];
+      const screenData_EditBikerScreen = {
+        ...dataSheetRow_EditBikerScreen,
+        dataSheetRow: dataSheetRow_EditBikerScreen,
+      }
       switch (screenId) {
         default:
           return null;
+        case 'bracketexported':
+          return (<BracketExportedScreen {...screenProps} />)
+
         case 'addbiker':
           return (<AddBikerScreen {...screenProps} />)
-        case 'mensabracket':
-          return (<MensABracketScreen {...screenProps} />)
+        case 'bracket':
+          return (<BracketScreen {...screenProps} />)
         case 'qualifying':
           return (<QualifyingScreen {...screenProps} />)
         case 'race':
           return (<RaceScreen {...screenProps} />)
-        case 'welcome':
-          return (<WelcomeScreen {...screenProps} />)
-        case 'ugly':
-          return (<UglyScreen {...screenProps} />)
-        case 'addqualifyingtime':
-          return (<AddQualifyingTimeScreen {...screenProps} />)
-        case 'qualifyingupdated':
-          return (<QualifyingUpdatedScreen {...screenProps} />)
+        case 'pickyourclass':
+          return (<PickYourClassScreen {...screenProps} />)
+        case 'welcometogeorgiatech41':
+          return (<WelcomeToGeorgiaTech41Screen {...screenProps} />)
+        case 'mtbracket':
+          return (<MTBracketScreen {...screenProps} />)
+        case 'editbiker':
+          return (<EditBikerScreen {...screenProps} {...screenData_EditBikerScreen} />)
+        case 'timer':
+          return (<TimerScreen {...screenProps} />)
+       
       }
     }
 

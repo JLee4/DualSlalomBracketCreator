@@ -1,0 +1,53 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "dualslalombracketcre-20190322112307-authRole",
+			"UnauthRoleArn": "arn:aws:iam::753485462544:role/dualslalombracketcre-20190322112307-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::753485462544:role/dualslalombracketcre-20190322112307-authRole",
+			"Region": "us-east-2",
+			"DeploymentBucketName": "dualslalombracketcre-20190322112307-deployment",
+			"UnauthRoleName": "dualslalombracketcre-20190322112307-unauthRole",
+			"StackName": "dualslalombracketcre-20190322112307",
+			"StackId": "arn:aws:cloudformation:us-east-2:753485462544:stack/dualslalombracketcre-20190322112307/8eb646e0-4cb6-11e9-9127-02278d0d93fc"
+		}
+	},
+	"api": {
+		"dualslalombracketcre": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "API_KEY",
+				"GraphQLAPIIdOutput": "yvnpvyi2jrg2dpduynvvydye3q",
+				"GraphQLAPIEndpointOutput": "https://arngfxlfmfg6ncabtz7z5hf5ha.appsync-api.us-east-2.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-3wjgra6m7vclpchwrri5iezrc4"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apidualslalombracketcre"
+			},
+			"lastPushTimeStamp": "2019-04-04T02:41:51.096Z",
+			"lastPushDirHash": "s/sVCmS3ihsnAkxj/rkst9p7UWM="
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2019-04-04T02:41:47.791Z",
+			"output": {
+				"S3BucketSecureURL": "https://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3.amazonaws.com",
+				"WebsiteURL": "http://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3-website.us-east-2.amazonaws.com",
+				"Region": "us-east-2",
+				"HostingBucketName": "uallalomracketre-20190323001259-hostingbucket-dualslalom",
+				"CloudFrontSecureURL": "https://d3ghbzwjrjydp1.cloudfront.net",
+				"CloudFrontDistributionID": "E1TR4TRWBP2J5Q",
+				"CloudFrontDomainName": "d3ghbzwjrjydp1.cloudfront.net"
+			},
+			"lastPushDirHash": "LU+oKAMBWmqtUjuvcMjct/nOzXs="
+		}
+	}
+}

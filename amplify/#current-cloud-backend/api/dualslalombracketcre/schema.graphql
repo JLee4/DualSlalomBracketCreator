@@ -1,0 +1,31 @@
+type Tournament @model {
+	id: ID!
+	name: String!
+}
+
+type Match @model {
+	id: ID!
+	tournamentID: ID
+	categoryName: String!
+	matchNumber: Int!
+	racer1ID: ID
+	racer2ID: ID
+	racer1Number: String
+	racer2Number: String
+	racer1Time1: String
+	racer1Time2: String
+	racer2Time1: String
+	racer2Time2: String
+	winnerRacerNumber: String
+	winnerID: ID
+}
+
+type Racer @model {
+	id: ID!
+	tournamentID: ID
+	name: String!
+	category: String!
+	seedNumber: Int
+	qualificationTime: String
+	racerNumber: String!
+}

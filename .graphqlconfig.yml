@@ -1,0 +1,16 @@
+projects:
+  dualslalombracketcre:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        graphQLApiId: yvnpvyi2jrg2dpduynvvydye3q
+      endpoints:
+        prod: >-
+          https://arngfxlfmfg6ncabtz7z5hf5ha.appsync-api.us-east-2.amazonaws.com/graphql

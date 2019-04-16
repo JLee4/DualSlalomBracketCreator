@@ -5,7 +5,7 @@ const awsmobile = {
     "aws_appsync_graphqlEndpoint": "https://arngfxlfmfg6ncabtz7z5hf5ha.appsync-api.us-east-2.amazonaws.com/graphql",
     "aws_appsync_region": "us-east-2",
     "aws_appsync_authenticationType": "API_KEY",
-    "aws_appsync_apiKey": "da2-3wjgra6m7vclpchwrri5iezrc4",
+    "aws_appsync_apiKey": "da2-fdbpjo3wwrg77k4kv3oxpuerxi",
     "aws_content_delivery_bucket": "uallalomracketre-20190323001259-hostingbucket-dualslalom",
     "aws_content_delivery_bucket_region": "us-east-2",
     "aws_content_delivery_url": "https://d3ghbzwjrjydp1.cloudfront.net"

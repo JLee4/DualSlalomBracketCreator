@@ -41,13 +41,13 @@ export default class EditBikerScreen extends Component {
 
   
   onClick_elFab = (ev) => {
-    if (this.props.appActions.getCurrentRacer().name != this.state.field) {
+    if (this.props.appActions.getCurrentRacer().name !== this.state.field) {
        this.props.appActions.getCurrentRacer().name = this.state.field;
     }
-    if (this.props.appActions.getCurrentRacer().qualificationTime != this.state.field2) {
+    if (this.props.appActions.getCurrentRacer().qualificationTime !== this.state.field2) {
       this.props.appActions.getCurrentRacer().qualificationTime = this.state.field2;
    }
-   if (this.props.appActions.getCurrentRacer().racerNumber != this.state.field3) {
+   if (this.props.appActions.getCurrentRacer().racerNumber !== this.state.field3) {
     this.props.appActions.getCurrentRacer().racerNumber = this.state.field3;
  }
    

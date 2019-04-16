@@ -83,11 +83,8 @@
 			"Properties": {
 				"TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
-					"AppSyncApiName": "dualslalombracketcre",
-					"DynamoDBBillingMode": "PAY_PER_REQUEST",
-					"APIKeyExpirationEpoch": "-1",
 					"S3DeploymentBucket": "dualslalombracketcre-20190322112307-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/b2687eb753463932c440ce87ffc2eb16f8ca3a6d",
+					"S3DeploymentRootKey": "amplify-appsync-files/b2bba7211a240b9f89f82cb09dc2e7971ee0afc1",
 					"env": "dualslalom"
 				}
 			}

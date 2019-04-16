@@ -26,7 +26,7 @@ export const getMatch = `query GetMatch($id: ID!) {
   getMatch(id: $id) {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID
@@ -50,7 +50,7 @@ export const listMatchs = `query ListMatchs(
     items {
       id
       tournamentID
-      categoryName
+      category
       matchNumber
       racer1ID
       racer2ID

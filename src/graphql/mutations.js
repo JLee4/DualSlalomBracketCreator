@@ -26,7 +26,7 @@ export const createMatch = `mutation CreateMatch($input: CreateMatchInput!) {
   createMatch(input: $input) {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID
@@ -45,7 +45,7 @@ export const updateMatch = `mutation UpdateMatch($input: UpdateMatchInput!) {
   updateMatch(input: $input) {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID
@@ -64,7 +64,7 @@ export const deleteMatch = `mutation DeleteMatch($input: DeleteMatchInput!) {
   deleteMatch(input: $input) {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID

@@ -5,6 +5,7 @@ import btn_icon_back_pickyourclass from './images/btn_icon_back_pickyourclass.pn
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
+import Database from "./services/Database";
 
 
 export default class PickYourClassScreen extends Component {
@@ -57,6 +58,7 @@ export default class PickYourClassScreen extends Component {
   
   
   render() {
+    Database.queryAllRacers();
     // eslint-disable-next-line no-unused-vars
     let baseStyle = {};
     // eslint-disable-next-line no-unused-vars

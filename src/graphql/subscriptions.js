@@ -26,7 +26,7 @@ export const onCreateMatch = `subscription OnCreateMatch {
   onCreateMatch {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID
@@ -45,7 +45,7 @@ export const onUpdateMatch = `subscription OnUpdateMatch {
   onUpdateMatch {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID
@@ -64,7 +64,7 @@ export const onDeleteMatch = `subscription OnDeleteMatch {
   onDeleteMatch {
     id
     tournamentID
-    categoryName
+    category
     matchNumber
     racer1ID
     racer2ID

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsmobile from './../aws-exports';
-import * as queries from './../graphql/queries';
 import * as mutations from './../graphql/mutations';
+import * as subscriptions from './../graphql/subscriptions';
+import * as queries from './../graphql/queries';
 Amplify.configure(awsmobile);
 
 export default class Database extends Component {
@@ -260,19 +261,30 @@ export default class Database extends Component {
     }
   }
 
-  static getRacersByCategory(category) {
-    this.racerList.sort((a, b) => {
-      if (!a.qualificationTime || !b.qualificationTime) {
-        return parseInt(a.racerNumber) - parseInt(b.racerNumber);
+  static queryAllRacers() {
+    API.graphql(graphqlOperation(queries.listRacers)).then((resolve) => {
+      if (Array.isArray(resolve.data.listRacers.items) && resolve.data.listRacers.items.length) {
+        this.racerList = resolve.data.listRacers.items;
       }
-      return new Date('1970-01-01T00:' + a.qualificationTime + 'Z') - new Date('1970-01-01T00:' + b.qualificationTime + 'Z');
-    });
-    let categoryRacers = this.racerList.filter(racer => racer.category === category);
-    for (let i = 0; i < categoryRacers.length; i++) {
-      categoryRacers[i].seedNumber = i + 1;
-      this.updateRacer(categoryRacers[i]);
+    }, (reason => console.log(reason)));
+  }
+
+  static getRacersByCategory(category) {
+    if (this.racerList) {
+      this.racerList.sort((a, b) => {
+        if (!a.qualificationTime || !b.qualificationTime) {
+          return parseInt(a.racerNumber) - parseInt(b.racerNumber);
+        }
+        return new Date('1970-01-01T00:' + a.qualificationTime + 'Z') - new Date('1970-01-01T00:' + b.qualificationTime + 'Z');
+      });
+      let categoryRacers = this.racerList.filter(racer => racer.category === category);
+      for (let i = 0; i < categoryRacers.length; i++) {
+        categoryRacers[i].seedNumber = i + 1;
+        this.updateRacer(categoryRacers[i]);
+      }
+      return categoryRacers;
     }
-    return categoryRacers;
+    return [];
   }
 
   /**

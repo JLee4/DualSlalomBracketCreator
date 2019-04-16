@@ -19,14 +19,14 @@
 				"securityType": "API_KEY",
 				"GraphQLAPIIdOutput": "yvnpvyi2jrg2dpduynvvydye3q",
 				"GraphQLAPIEndpointOutput": "https://arngfxlfmfg6ncabtz7z5hf5ha.appsync-api.us-east-2.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-3wjgra6m7vclpchwrri5iezrc4"
+				"GraphQLAPIKeyOutput": "da2-fdbpjo3wwrg77k4kv3oxpuerxi"
 			},
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apidualslalombracketcre"
 			},
-			"lastPushTimeStamp": "2019-04-04T02:41:51.096Z",
-			"lastPushDirHash": "s/sVCmS3ihsnAkxj/rkst9p7UWM="
+			"lastPushTimeStamp": "2019-04-16T18:41:25.515Z",
+			"lastPushDirHash": "SpAzpGjCr/KMRqe15ch/CRktDu4="
 		}
 	},
 	"hosting": {
@@ -37,7 +37,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/hosting/template.json",
 				"logicalId": "hostingS3AndCloudFront"
 			},
-			"lastPushTimeStamp": "2019-04-04T02:41:47.791Z",
+			"lastPushTimeStamp": "2019-04-16T18:41:23.457Z",
 			"output": {
 				"S3BucketSecureURL": "https://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3.amazonaws.com",
 				"WebsiteURL": "http://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3-website.us-east-2.amazonaws.com",

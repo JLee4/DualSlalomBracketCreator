@@ -13,9 +13,9 @@ export default class MTBracketScreen extends Component {
   // appActions, deviceInfo
 
   onClick_elButton = (ev) => {
-    // Go to screen 'Welcome to Georgia Tech 4/1!'
+    // Go to screen 'Welcome to Georgia Tech 4/17!'
     this.props.appActions.goToScreen('welcometogeorgiatech41', { transitionId: 'fadeIn' });
-    Database.createTournament('Georgia Tech 4/1')
+    Database.createTournament('Georgia Tech 4/17')
   
   }
   

@@ -60,17 +60,7 @@ function Input(props) {
           <option value="16">16</option>
         </select>
       </div>
-      <div>
-        <input
-          type="text"
-          id="number"
-          value={props.newName}
-          placeholder="Input Your Competitors"
-          onChange={props.onChangeOfInput}
-          onKeyPress={props.onEnter}
-        />
-        <button onClick={props.onClick}>Input!</button>
-      </div>
+
     </div>
   );
 }
@@ -86,7 +76,7 @@ export default class BracketScreen extends Component {
      * @return Initialized matches
      */
     
- // input is rendered in App
+ // input is rende#050b0a in App
   renderInput() {
     return (
       <Input
@@ -263,7 +253,7 @@ export default class BracketScreen extends Component {
           28,
           29
         ],
-        mainRow: "9% 9% 9% 9% 9% 9% 9% 9% 9% 9% 9%"
+        mainRow: "5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%"
       }
     };
   }
@@ -368,7 +358,7 @@ export default class BracketScreen extends Component {
       this.setState({
         
         names: result,
-        isClicked: Array(6).fill("#9B88B4")
+        isClicked: Array(6).fill("#45a29e")
       });
     }
     if (newNum === "8") {
@@ -380,13 +370,17 @@ export default class BracketScreen extends Component {
       this.setState({
         
         names: result,
-        isClicked: Array(14).fill("#9B88B4")
+        isClicked: Array(14).fill("#45a29e")
       });
     }
     if (newNum === "16") {
+      var obj = database.getRacersByCategory(this.props.appActions.getFilterState())
+      var result = Object.keys(obj).splice(0,18).map(function(key) {
+      return obj[key].name;
+      });
       this.setState({
         names: Array(30).fill(),
-        isClicked: Array(30).fill("#9B88B4")
+        isClicked: Array(30).fill("#45a29e")
       });
     }
   }
@@ -400,59 +394,59 @@ export default class BracketScreen extends Component {
       if (
         newArr[key + 1] !== undefined &&
         key % 2 === 0 &&
-        clickedArr[key + 1] !== "green" &&
+        clickedArr[key + 1] !== "#a24578" &&
         numBracket === "4"
       ) {
         newArr[this.state.bracket4.match[key]] = arr[key]; //this algorithm decides where the name should go once clicked.
-        clickedArr[key] = "green";
-        clickedArr[key + 1] = "red"; //uses key plus or minus one and also depends on the bracket size
+        clickedArr[key] = "#a24578";
+        clickedArr[key + 1] = "#050b0a"; //uses key plus or minus one and also depends on the bracket size
       } else if (
         newArr[key - 1] !== undefined &&
         key % 2 !== 0 &&
-        clickedArr[key - 1] !== "green" &&
+        clickedArr[key - 1] !== "#a24578" &&
         numBracket === "4"
       ) {
         newArr[this.state.bracket4.match[key]] = arr[key];
-        clickedArr[key] = "green";
-        clickedArr[key - 1] = "red";
+        clickedArr[key] = "#a24578";
+        clickedArr[key - 1] = "#050b0a";
       }
       if (
         newArr[key + 1] !== undefined &&
         key % 2 === 0 &&
-        clickedArr[key + 1] !== "green" &&
+        clickedArr[key + 1] !== "#a24578" &&
         numBracket === "8"
       ) {
         newArr[this.state.bracket8.match[key]] = arr[key];
-        clickedArr[key] = "green";
-        clickedArr[key + 1] = "red";
+        clickedArr[key] = "#a24578";
+        clickedArr[key + 1] = "#050b0a";
       } else if (
         newArr[key - 1] !== undefined &&
         key % 2 !== 0 &&
-        clickedArr[key - 1] !== "green" &&
+        clickedArr[key - 1] !== "#a24578" &&
         numBracket === "8"
       ) {
         newArr[this.state.bracket8.match[key]] = arr[key];
-        clickedArr[key] = "green";
-        clickedArr[key - 1] = "red";
+        clickedArr[key] = "#a24578";
+        clickedArr[key - 1] = "#050b0a";
       }
       if (
         newArr[key + 1] !== undefined &&
         key % 2 === 0 &&
-        clickedArr[key + 1] !== "green" &&
+        clickedArr[key + 1] !== "#a24578" &&
         numBracket === "16"
       ) {
         newArr[this.state.bracket16.match[key]] = arr[key];
-        clickedArr[key] = "green";
-        clickedArr[key + 1] = "red";
+        clickedArr[key] = "#a24578";
+        clickedArr[key + 1] = "#050b0a";
       } else if (
         newArr[key - 1] !== undefined &&
         key % 2 !== 0 &&
-        clickedArr[key - 1] !== "green" &&
+        clickedArr[key - 1] !== "#a24578" &&
         numBracket === "16"
       ) {
         newArr[this.state.bracket16.match[key]] = arr[key];
-        clickedArr[key] = "green";
-        clickedArr[key - 1] = "red";
+        clickedArr[key] = "#a24578";
+        clickedArr[key - 1] = "#050b0a";
       }
     }
     this.setState({
@@ -547,6 +541,7 @@ export default class BracketScreen extends Component {
       color: '#fff',
       textAlign: 'left',
       backgroundColor: '#1e2733',
+      paddingTop: '-100px'
    };
   const style_elFab_outer = {
       cursor: 'pointer',
@@ -559,11 +554,11 @@ export default class BracketScreen extends Component {
       paddingTop: '100px'
    };
 
-    const styleRed1 = {
+    const style1 = {
     
-      paddingTop: '40px'
+      paddingTop: '50px'
      };
-     const styleRed2 = {
+     const style2 = {
     
       paddingTop: '-240px'
      };
@@ -571,9 +566,9 @@ export default class BracketScreen extends Component {
       <div className="AppScreen BracketScreen" style={baseStyle}>
         <div className="background">
           <div className='appBg containerMinHeight elBackground' style={style_elBackground_outer}>
-          <div style = {styleRed1}>
+          <div style = {style1}>
         <div className="heading">{this.renderInput()}</div>
-        <div className="heading" style = {styleRed2}>{this.listBrackets()}</div>
+        <div className="heading" style = {style2}>{this.listBrackets()}</div>
               
           </div>
           <div style={style_elBackground} />
@@ -581,18 +576,18 @@ export default class BracketScreen extends Component {
           </div>
           
         </div>
-        <div style = {styleRed1}>
+        <div style = {style1}>
         <div className="heading">{this.renderInput()}</div>
-        <div className="heading" tyle = {styleRed2}>{this.listBrackets()}</div>
-              
-          </div>
-     
-          <div className='actionFont elFab' style={style_elFab_outer}>
+        <div className="heading" style = {style2}>{this.listBrackets()}</div>
+        <div className='actionFont elFab' style={style_elFab_outer}>
             <Button style={style_elFab}  variant="fab" onClick={this.onClick_elFab1} >
               <img src={btn_icon_652560} alt="" style={{width: '100%', marginTop: '4%'}} />
             </Button>
           
           </div>
+          </div>
+     
+         
         
         <Appbar className="navBar">
           <div className="title">Bracket</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_bracket} alt="" style={{width: '50%'}} /></div>

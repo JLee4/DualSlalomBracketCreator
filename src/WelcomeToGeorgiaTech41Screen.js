@@ -93,7 +93,7 @@ export default class WelcomeToGeorgiaTech41Screen extends Component {
           
         </div>
         <Appbar className="navBar">
-          <div className="title">Welcome to Georgia Tech 4/1!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_welcometogeorgiatech41} alt="" style={{width: '50%'}} /></div>
+          <div className="title">Welcome to Georgia Tech 4/17!</div>  <div className="backBtn" onClick={ (ev)=>{ this.props.appActions.goBack() } }><img src={btn_icon_back_welcometogeorgiatech41} alt="" style={{width: '50%'}} /></div>
         </Appbar>
         
       </div>

@@ -491,7 +491,7 @@ export default class DataSheet_localizationSheet extends DataSheetBase {
     item = {};
     this.items.push(item);
     item['key'] = "mtbracket_button_1008773";
-    item['en'] = "Georgia Tech 4/1";
+    item['en'] = "Georgia Tech 4/17";
     
     item = {};
     this.items.push(item);

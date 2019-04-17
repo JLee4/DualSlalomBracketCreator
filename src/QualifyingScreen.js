@@ -63,10 +63,8 @@ export default class QualifyingScreen extends Component {
      };
     // Source items and any special components used for list/grid element 'list'.
     let listComps_list = {};
-
     let items_list = Database.getRacersByCategory(this.props.appActions.getFilterState());
-   // items_list = items_list.concat(filterItems_list(this.props.appActions.getDataSheet('people').items));
-    
+
     return (
       <div className="AppScreen QualifyingScreen" style={baseStyle}>
         <div className="background">

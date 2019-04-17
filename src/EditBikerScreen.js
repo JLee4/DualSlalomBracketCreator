@@ -46,11 +46,11 @@ export default class EditBikerScreen extends Component {
     }
     if (this.props.appActions.getCurrentRacer().qualificationTime !== this.state.field2) {
       this.props.appActions.getCurrentRacer().qualificationTime = this.state.field2;
-   }
-   if (this.props.appActions.getCurrentRacer().racerNumber !== this.state.field3) {
-    this.props.appActions.getCurrentRacer().racerNumber = this.state.field3;
- }
-   
+    }
+    if (this.props.appActions.getCurrentRacer().racerNumber !== this.state.field3) {
+      this.props.appActions.getCurrentRacer().racerNumber = this.state.field3;
+    }
+
     Database.updateRacer(this.props.appActions.getCurrentRacer());
   
     // Go back in screen navigation history

@@ -25,7 +25,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apidualslalombracketcre"
 			},
-			"lastPushTimeStamp": "2019-04-16T18:41:25.515Z",
+			"lastPushTimeStamp": "2019-04-17T00:07:20.796Z",
 			"lastPushDirHash": "SpAzpGjCr/KMRqe15ch/CRktDu4="
 		}
 	},
@@ -37,17 +37,14 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/hosting/template.json",
 				"logicalId": "hostingS3AndCloudFront"
 			},
-			"lastPushTimeStamp": "2019-04-16T18:41:23.457Z",
+			"lastPushTimeStamp": "2019-04-17T00:07:20.803Z",
 			"output": {
-				"S3BucketSecureURL": "https://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3.amazonaws.com",
-				"WebsiteURL": "http://uallalomracketre-20190323001259-hostingbucket-dualslalom.s3-website.us-east-2.amazonaws.com",
+				"S3BucketSecureURL": "https://uallalomracketre-20190416194323-hostingbucket-dualslalom.s3.amazonaws.com",
+				"WebsiteURL": "http://uallalomracketre-20190416194323-hostingbucket-dualslalom.s3-website.us-east-2.amazonaws.com",
 				"Region": "us-east-2",
-				"HostingBucketName": "uallalomracketre-20190323001259-hostingbucket-dualslalom",
-				"CloudFrontSecureURL": "https://d3ghbzwjrjydp1.cloudfront.net",
-				"CloudFrontDistributionID": "E1TR4TRWBP2J5Q",
-				"CloudFrontDomainName": "d3ghbzwjrjydp1.cloudfront.net"
+				"HostingBucketName": "uallalomracketre-20190416194323-hostingbucket-dualslalom"
 			},
-			"lastPushDirHash": "LU+oKAMBWmqtUjuvcMjct/nOzXs="
+			"lastPushDirHash": "B0bdZQrqo8J8nN9PLhjJ5G4mAYc="
 		}
 	}
 }

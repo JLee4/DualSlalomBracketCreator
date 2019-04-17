@@ -269,6 +269,14 @@ export default class Database extends Component {
     }, (reason => console.log(reason)));
   }
 
+  static subscribeOnUpdateRacers() {
+    return API.graphql(graphqlOperation(subscriptions.onUpdateRacer)).subscribe((data) => {
+      let newRacerData = data.value.data.onUpdateRacer;
+      let racerIndex = Database.racerList.findIndex(racer => racer.racerNumber === newRacerData.racerNumber);
+      Database.racerList[racerIndex].qualificationTime = newRacerData.qualificationTime;
+    });
+  }
+
   static getRacersByCategory(category) {
     if (this.racerList) {
       this.racerList.sort((a, b) => {
@@ -279,8 +287,10 @@ export default class Database extends Component {
       });
       let categoryRacers = this.racerList.filter(racer => racer.category === category);
       for (let i = 0; i < categoryRacers.length; i++) {
-        categoryRacers[i].seedNumber = i + 1;
-        this.updateRacer(categoryRacers[i]);
+        if (categoryRacers[i].seedNumber !== i + 1) {
+          categoryRacers[i].seedNumber = i + 1;
+          this.updateRacer(categoryRacers[i]);
+        }
       }
       return categoryRacers;
     }
@@ -361,6 +371,8 @@ export default class Database extends Component {
    * @param match
    */
   static updateMatch(match) {
+    let matchIndex = Database.matches.findIndex(oldMatch => oldMatch.matchNumber === match.matchNumber);
+    Database.matches[matchIndex] = match;
     match.tournamentID = this.tournament.id;
     if (!match.racer1ID || !match.racer2ID || !match.winnerID) {
       for (let racer of this.racerList) {
@@ -432,6 +444,8 @@ export default class Database extends Component {
    * @param racer
    */
   static updateRacer(racer) {
+    let racerIndex = Database.racerList.findIndex(oldRacer => oldRacer.racerNumber === racer.racerNumber);
+    Database.racerList[racerIndex] = racer;
     racer.tournamentID = this.tournament.id;
     API.graphql(graphqlOperation(mutations.updateRacer, {input: racer})).then((resolve) => {
       racer.id = resolve.data.updateRacer.id;

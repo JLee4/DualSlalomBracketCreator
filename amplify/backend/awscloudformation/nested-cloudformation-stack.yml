@@ -94,7 +94,7 @@
 			"Properties": {
 				"TemplateURL": "https://s3.amazonaws.com/dualslalombracketcre-20190322112307-deployment/amplify-cfn-templates/hosting/template.json",
 				"Parameters": {
-					"bucketName": "uallalomracketre-20190323001259-hostingbucket",
+					"bucketName": "uallalomracketre-20190416194323-hostingbucket",
 					"env": "dualslalom"
 				}
 			}

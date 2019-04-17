@@ -476,14 +476,18 @@ export default class Database extends Component {
    * @param racer
    */
   static deleteRacer(racer) {
-    API.graphql(graphqlOperation(mutations.deleteRacer, {input: racer})).then(() => {},
-      () => {
+    let deletedRacer = {
+      id: racer.id
+    };
+    Database.racerList = Database.racerList.filter(oldRacer => oldRacer.racerNumber !== racer.racerNumber);
+    API.graphql(graphqlOperation(mutations.deleteRacer, {input: deletedRacer})).then(() => {},
+      (reason) => {
+        console.log(reason);
         if (racer.id) {
           Database.racerDeleteQueue.push(racer);
         }
       }).finally(() => {
         Database.racerDeleteQueue = Database.racerDeleteQueue.filter(oldRacer => oldRacer.racerNumber !== racer.racerNumber);
-        Database.racerList = Database.racerList.filter(oldRacer => oldRacer.racerNumber !== racer.racerNumber);
     });
   };
 }

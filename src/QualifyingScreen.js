@@ -64,6 +64,8 @@ export default class QualifyingScreen extends Component {
     // Source items and any special components used for list/grid element 'list'.
     let listComps_list = {};
     let items_list = Database.getRacersByCategory(this.props.appActions.getFilterState());
+    console.log("HEHEHEH")
+    console.log(Database.getRacerList())
 
     return (
       <div className="AppScreen QualifyingScreen" style={baseStyle}>

@@ -14,9 +14,8 @@ import btn_icon_652560 from './images/btn_icon_652560.png';
 // UI framework component imports
 import Button from 'muicss/lib/react/button';
 import Appbar from 'muicss/lib/react/appbar';
-import {createMatch} from "./graphql/mutations";
-import {NULL} from "graphql/language/kinds";
-import Database from './services/Database.js';
+
+import database from './services/Database.js';
 
 import "./styles.css";
 //this is the styled component for the competitor which is just a button
@@ -59,8 +58,6 @@ function Input(props) {
           <option value="4">4</option>
           <option value="8">8</option>
           <option value="16">16</option>
-          <option value="32">32</option>
-          <option value="64">64</option>
         </select>
       </div>
       <div>
@@ -79,6 +76,7 @@ function Input(props) {
 }
 
 export default class BracketScreen extends Component {
+ 
 
     /**
      * Initializes all matches(for the whole bracket) populating the first round based on number of riders given and category
@@ -161,7 +159,7 @@ export default class BracketScreen extends Component {
         mainRow: "20% 20% 20% 20% 20%"
       },
       bracket8: {
-        mainColumn: "10% 5% 5% 5% 5% 10%",
+        mainColumn: "20% 15% 15% 15% 15% 20%",
         column: [1, 1, 1, 1, 6, 6, 6, 6, 2, 2, 5, 5, 3, 4],
         row: [1, 2, 4, 5, 1, 2, 4, 5, 2, 4, 2, 4, 3, 3],
         match: [8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 13, 12],
@@ -340,58 +338,6 @@ export default class BracketScreen extends Component {
       });
     }
   }
-  //when the input is being changed, update the string of new name
-  createMatches(category, numRiders) {
-    let numMatches = numRiders - 1;
-    let tournamentID = "ID";
-    let matchID = 0;
-
-    let matchList = [numMatches];
-
-    // Initialize all empty matches for the whole bracket
-    for (let i = 0; i < numMatches; i++) {
-        let match = {matchNumber: i, category: category};
-        matchList[i] = match;
-        Database.createMatch(category, i, match)
-    }
-
-    let racerList = Database.getRacersByCategory(this.props.appActions.getFilterState());
-
-    // Populate empty matches with racerID's
-    let seed1Index = 0;
-    let seed2Index = numRiders - 1;
-    let matchIndex = numMatches - 1;
-    // First half of first round
-    for (let i =  0; i < numRiders / 4; i++) {
-        matchList[i].racer1ID = racerList[seed1Index].id;
-        matchList[i].racer2ID = racerList[seed2Index].id;
-        matchList[i].racer1Number = racerList[seed1Index].racerNumber;
-        matchList[i].racer2Number = racerList[seed2Index].racerNumber;
-        Database.updateMatch(matchList[i]);
-        seed1Index += 2;
-        seed2Index -= 2;
-        matchIndex -= 1;
-    }
-
-    /* Ex: 16 riders: In the loop above, seed1Index ended with value of 8 and seed2Index with value of 7.
-           To populate the lower half of the first round of brackets, we decrement seed1Index by 1 and increment
-           seed2Index by 1. From here, we decrement seed1Index by 2 and increment seed2Index by 2 instead of
-           incrementing and decrementing respectively as in the first half.
-     */
-    seed1Index -= 1;
-    seed2Index += 1;
-    for (let i = 0; i < numRiders / 4; i++) {
-        matchList[i].racer1ID = racerList[seed1Index].id;
-        matchList[i].racer2ID = racerList[seed2Index].id;
-        matchList[i].racer1Number = racerList[seed1Index].racerNumber;
-        matchList[i].racer2Number = racerList[seed2Index].racerNumber;
-        Database.updateMatch(matchList[i]);
-        seed1Index -= 2;
-        seed2Index += 2;
-        matchIndex -= 1;
-    }
-    return matchList
-}
   handleChangeOfInput(e) {
     const name = e.target.value;
     this.setState({
@@ -414,16 +360,26 @@ export default class BracketScreen extends Component {
     }
 
     if (newNum === "4") {
-      //depending on the seed, fills the arrays with the correct amount of buttons.
+      var obj = database.getRacersByCategory(this.props.appActions.getFilterState())
+      var result = Object.keys(obj).splice(0,4).map(function(key) {
+      return obj[key].name;
+      });
+      console.log(result)
       this.setState({
-        names: [1,2,3,4],
-        class: "bracket4",
+        
+        names: result,
         isClicked: Array(6).fill("#9B88B4")
       });
     }
     if (newNum === "8") {
+      var obj = database.getRacersByCategory(this.props.appActions.getFilterState())
+      var result = Object.keys(obj).splice(0,8).map(function(key) {
+      return obj[key].name;
+      });
+      console.log(result)
       this.setState({
-        names: Database.getRacersByCategory("Men's A"),
+        
+        names: result,
         isClicked: Array(14).fill("#9B88B4")
       });
     }
@@ -664,10 +620,10 @@ export default class BracketScreen extends Component {
       for (let i = 0; i < numMatches; i++) {
           let match = {matchNumber: i, category: category};
           matchList[i] = match;
-          Database.createMatch(category, i, match) 
+          database.createMatch(category, i, match)
       }
 
-      let racerList = Database.getRacersByCategory(category);
+      let racerList = database.getRacersByCategory(category);
 
       // Populate empty matches with racerID's
       let seed1Index = 0;
@@ -679,7 +635,7 @@ export default class BracketScreen extends Component {
           matchList[i].racer2ID = racerList[seed2Index].id;
           matchList[i].racer1Number = racerList[seed1Index].racerNumber;
           matchList[i].racer2Number = racerList[seed2Index].racerNumber;
-          Database.updateMatch(matchList[i]);
+          database.updateMatch(matchList[i]);
           seed1Index += 2;
           seed2Index -= 2;
           matchIndex -= 1;
@@ -697,7 +653,7 @@ export default class BracketScreen extends Component {
           matchList[i].racer2ID = racerList[seed2Index].id;
           matchList[i].racer1Number = racerList[seed1Index].racerNumber;
           matchList[i].racer2Number = racerList[seed2Index].racerNumber;
-          Database.updateMatch(matchList[i]);
+          database.updateMatch(matchList[i]);
           seed1Index -= 2;
           seed2Index += 2;
           matchIndex -= 1;
@@ -781,9 +737,9 @@ export default class BracketScreen extends Component {
           }
 
           // TODO: Update nextMatch somehow
-          Database.updateMatch(nextMatch);
+          database.updateMatch(nextMatch);
       }
-      Database.updateMatch(match);
+      database.updateMatch(match);
   }
   
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> LALA</title>
+        <link href="jquery.bracket.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="tournament"></div>
+
+        <script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.bracket.min.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.bracket.min.css" />
+        <script>
+        
+       
+var saveData = {
+  teams: [
+    ["Team 1", "Team 2"],
+    ["Team 3", "Team 4"],
+    ["Team 4", null],
+    ["Team 5", null]
+  ],
+  results: [
+      [
+        [[1, 0], [null, null], [null, null], [null, null]],
+        [[null, null], [1, 4]],
+        [[null, null], [null, null]]
+      ]
+  ]
+};
+function saveFn(data, userData) {
+  var json = jQuery.toJSON(data)
+  $('#saveOutput').text('POST '+userData+' '+json)
+  /* You probably want to do something like this
+  jQuery.ajax("rest/"+userData, {contentType: 'application/json',
+                                dataType: 'json',
+                                type: 'post',
+                                data: json})
+  */
+}
+            $('.tournament').bracket({
+                init: saveData,
+      save: saveFn,
+            });
+        </script>
+    </body>
+</html>

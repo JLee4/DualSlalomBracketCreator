@@ -154,14 +154,15 @@ export default class App extends Component {
   }
 
   goBack = () => {
+    Database.persistToStorage();
     // This method is the default implementation and could be customized by a navigation plugin.
     if (this.screenHistory.length < 2)
       return;
-
     this.screenHistory.splice(this.screenHistory.length - 1, 1);
     let prevScreenState = this.screenHistory[this.screenHistory.length - 1];
     this.setState({...prevScreenState, screenTransitionForward: false});
     window.scrollTo(0, 0);
+
   }
 
   getDataSheet = (sheetId) => {

@@ -413,7 +413,10 @@ export default class Database extends Component {
    * @param match
    */
   static deleteMatch(match) {
-    API.graphql(graphqlOperation(mutations.deleteMatch, {input: match})).then(() => {},
+    let deletedMatch = {
+      id: match.id
+    };
+    API.graphql(graphqlOperation(mutations.deleteMatch, {input: deletedMatch})).then(() => {},
       () => {
         if (match.id) {
           Database.matchDeleteQueue.push(match);

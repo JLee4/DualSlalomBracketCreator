@@ -285,14 +285,6 @@ export default class Database extends Component {
     }, (reason => console.log(reason)));
   }
 
-  static subscribeOnUpdateRacers() {
-    return API.graphql(graphqlOperation(subscriptions.onUpdateRacer)).subscribe((data) => {
-      let newRacerData = data.value.data.onUpdateRacer;
-      let racerIndex = Database.racerList.findIndex(racer => racer.racerNumber === newRacerData.racerNumber);
-      Database.racerList[racerIndex].qualificationTime = newRacerData.qualificationTime;
-    });
-  }
-
   static getRacersByCategory(category) {
     if (this.racerList) {
       this.racerList.sort((a, b) => {
@@ -439,23 +431,27 @@ export default class Database extends Component {
    * @param racer if passing an entire racer object
    */
   static createRacer(name, racerNumber, category, qualificationTime, racer) {
-    let details = {
-      name: name,
-      category: category,
-      racerNumber: racerNumber,
-      qualificationTime: qualificationTime,
-      tournamentID: this.tournament ? this.tournament.id : undefined
-    };
-    if (racer) {
-      details = racer;
+    if (this.racerList.filter(racer => racer.racerNumber === racerNumber).length === 0) {
+      let details = {
+        name: name,
+        category: category,
+        racerNumber: racerNumber,
+        qualificationTime: qualificationTime,
+      };
+      if (racer) {
+        details = racer;
+      }
+      if (Database.tournament) {
+        details.tournamentID = Database.tournament.id
+      }
+      API.graphql(graphqlOperation(mutations.createRacer, {input: details})).then((resolve) => {
+        details.id = resolve.data.createRacer.id;
+      }, (reject) => {
+        console.log(reject)
+      }).finally(() => {
+        this.racerList.push(details);
+      });
     }
-    this.racerList.push(details);
-
-    API.graphql(graphqlOperation(mutations.createRacer, {input: details})).then((resolve) => {
-      details.id = resolve.data.createRacer.id;
-     // racer.tournamentID = this.tournament.id;
-    }, (reject) => {
-    });
   };
 
   /**

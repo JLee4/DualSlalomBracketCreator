@@ -131,11 +131,27 @@ export default class Database extends Component {
    * replaces all session variables from local. I'd use this for an existing tournament
    */
   static getLocal() {
-    this.tournament = JSON.parse(localStorage.getItem("tournament"));
-    this.racerList = JSON.parse(localStorage.getItem("racerList"));
-    this.matches = JSON.parse(localStorage.getItem("matches"));
-    this.racerDeleteQueue = JSON.parse(localStorage.getItem("racerDeleteQueue"));
-    this.matchDeleteQueue = JSON.parse(localStorage.getItem("matchDeleteQueue"));
+    let localTournament = JSON.parse(localStorage.getItem("tournament"));
+    let localRacerList = JSON.parse(localStorage.getItem("racerList"));
+    let localMatches = JSON.parse(localStorage.getItem("matches"));
+    let localRacerDeleteQueue = JSON.parse(localStorage.getItem("racerDeleteQueue"));
+    let localMatchDeleteQueue = JSON.parse(localStorage.getItem("matchDeleteQueue"));
+
+    if (localTournament) {
+      Database.tournament = localTournament;
+    }
+    if (localRacerList) {
+      Database.racerList = localRacerList;
+    }
+    if (localMatches) {
+      Database.matches = localMatches;
+    }
+    if (localRacerDeleteQueue) {
+      Database.racerDeleteQueue = localRacerDeleteQueue;
+    }
+    if (localMatchDeleteQueue) {
+      Database.matchDeleteQueue = localMatchDeleteQueue;
+    }
   }
 
   /**
